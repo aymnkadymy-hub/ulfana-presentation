@@ -1,0 +1,74 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+:root{
+ --brown:#8B5E3C; --brown-d:#5B3A29; --brown-dd:#3a2417;
+ --gold:#FFD27A; --gold-d:#E0A94A;
+ --cream:#FBF7F1; --cream2:#F3EADD; --card:#FFFFFF;
+ --ink:#2A2018; --muted:#7C6B5C; --line:#EADBCB;
+ --blue:#1d9bf0; --ok:#2E9E6B; --no:#CF6A52; --mid:#D9A23B;
+}
+html,body{width:1280px;height:720px;font-family:"Open Sans","Noto Sans",sans-serif;color:var(--ink)}
+.slide{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--cream)}
+.pad{position:absolute;inset:0;padding:62px 70px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:800;
+ letter-spacing:2.5px;text-transform:uppercase;color:var(--brown)}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--gold-d)}
+h1.t{font-size:50px;font-weight:800;line-height:1.06;letter-spacing:-1px;margin-top:16px;color:var(--ink)}
+h1.t .hl{color:var(--brown)}
+.sub{font-size:21px;color:var(--muted);font-weight:600;line-height:1.4;margin-top:14px}
+.logo{width:46px;height:46px;display:block}
+.foot{position:absolute;left:70px;right:70px;bottom:30px;display:flex;align-items:center;
+ justify-content:space-between;font-size:13px;color:var(--muted);font-weight:700}
+.foot .brand{display:flex;align-items:center;gap:10px}
+.foot .brand b{color:var(--brown);font-weight:800;letter-spacing:.5px}
+.pg{font-weight:800;color:var(--brown)}
+/* dark variant */
+.slide.dark{background:linear-gradient(135deg,#6b462c 0%,var(--brown-d) 55%,var(--brown-dd) 100%);color:#fff}
+.dark h1.t{color:#fff}
+.dark h1.t .hl{color:var(--gold)}
+.dark .eyebrow{color:var(--gold)}
+.dark .sub{color:#EAD9C7}
+.dark .foot{color:#D8C3AD}
+.dark .foot .brand b{color:#fff}
+.dark .pg{color:var(--gold)}
+/* deco blobs */
+.blob{position:absolute;border-radius:50%;opacity:.5;filter:blur(2px)}
+.dark .blob{opacity:.10;background:#fff;filter:blur(0)}
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;
+ box-shadow:0 18px 40px -26px rgba(80,50,20,.45)}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+ border-radius:999px;padding:7px 15px;font-weight:800;font-size:15px;color:var(--brown)}
+/* browser frame for screenshots */
+.frame{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;
+ box-shadow:0 30px 70px -30px rgba(60,36,16,.55)}
+.frame .bar{height:34px;background:#efe6da;display:flex;align-items:center;gap:7px;padding:0 14px;
+ border-bottom:1px solid var(--line)}
+.frame .bar i{width:11px;height:11px;border-radius:50%;background:#d7c6b2;display:block}
+.frame .bar i.r{background:#e0a39a}.frame .bar i.y{background:#e6c48f}.frame .bar i.g{background:#a9cdb0}
+.frame img{display:block;width:100%}
+.phone{width:188px;border-radius:30px;background:#241a12;padding:18px 9px 13px;position:relative;box-shadow:0 26px 55px -22px rgba(50,30,12,.6)}
+.phone::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:60px;height:5px;border-radius:5px;background:#6a5648;z-index:3}
+.phone img{width:100%;border-radius:20px;display:block}
+/* icon tiles */
+.itile{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:26px;
+ background:linear-gradient(135deg,var(--brown),var(--brown-d));color:#fff;flex:0 0 auto}
+.itile.gold{background:linear-gradient(135deg,#f0c060,var(--gold-d));color:#5b3a29}
+/* checks */
+.yes{color:var(--ok);font-weight:900}.no{color:var(--no);font-weight:900}.par{color:var(--mid);font-weight:900}
+.hc{display:inline-block;width:15px;height:15px;border-radius:50%;border:2px solid var(--mid);background:linear-gradient(90deg,var(--mid) 0 50%,#fff 50% 100%);vertical-align:-2px}
+.big{font-size:70px;font-weight:800;line-height:1;color:var(--brown);letter-spacing:-2px}
+.dark .big{color:var(--gold)}
+</style></head><body><div class="slide">
+<div class="pad">
+  <div class="eyebrow"><span class="dot"></span>Head to head — closest competitors</div>
+  <h1 class="t">Even our closest rivals <span class="hl">only hold half.</span></h1>
+  <div style="display:flex;gap:18px;margin-top:28px;align-items:stretch;height:340px">
+    <div class="card" style="padding:20px;flex:1;display:flex;flex-direction:column"><b style="font-size:21px;color:var(--brown-d)">Iraq Academy</b><div style="font-size:13px;color:var(--muted);font-weight:700;margin-top:2px">“educational social network”</div><div style="margin-top:14px;font-size:14.5px;display:flex;gap:8px"><span class="yes">✓</span><span>Real social features — profiles, posts, groups</span></div><div style="margin-top:9px;font-size:14.5px;display:flex;gap:8px"><span class="no">✕</span><span>Zero AI · no offline · class-scoped only</span></div><div style="margin-top:auto;padding-top:14px"><span class="chip" style="font-size:13px">100k+ installs</span></div></div>
+    <div class="card" style="padding:20px;flex:1;display:flex;flex-direction:column"><b style="font-size:21px;color:var(--brown-d)">Istabaq</b><div style="font-size:13px;color:var(--muted);font-weight:700;margin-top:2px">AI exam-prep</div><div style="margin-top:14px;font-size:14.5px;display:flex;gap:8px"><span class="yes">✓</span><span>Genuine AI: ministerial-exam generation & grading</span></div><div style="margin-top:9px;font-size:14.5px;display:flex;gap:8px"><span class="no">✕</span><span>Cloud-only · no social · grades 9 &amp; 12 only</span></div><div style="margin-top:auto;padding-top:14px"><span class="chip" style="font-size:13px">Early-stage</span></div></div>
+    <div class="card" style="padding:20px;flex:1;display:flex;flex-direction:column"><b style="font-size:21px;color:var(--brown-d)">Abwaab</b><div style="font-size:13px;color:var(--muted);font-weight:700;margin-top:2px">Licensed tutoring LMS</div><div style="margin-top:14px;font-size:14.5px;display:flex;gap:8px"><span class="yes">✓</span><span>Scale + an official MoE licence</span></div><div style="margin-top:9px;font-size:14.5px;display:flex;gap:8px"><span class="no">✕</span><span>“AI” is marketing · paywalled · online-only</span></div><div style="margin-top:auto;padding-top:14px"><span class="chip" style="font-size:13px">1M+ downloads</span></div></div>
+  </div>
+  <div style="margin-top:24px;text-align:center;font-size:23px;font-weight:800;color:var(--brown)">
+    Each holds <b>one half</b> of Ulfana. <span style="color:var(--gold-d)">None holds the combination.</span></div>
+  <div class="foot"><div class="brand"><svg class="logo" viewBox="0 0 64 64"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5E3C"/><stop offset="1" stop-color="#5B3A29"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="16" fill="url(#lg)"/><path d="M14 22c5-3 11-3 16 0v23c-5-3-11-3-16 0V22z" fill="#fff" opacity=".95"/><path d="M50 22c-5-3-11-3-16 0v23c5-3 11-3 16 0V22z" fill="#fff" opacity=".8"/><path d="M32 19v26" stroke="#5B3A29" stroke-width="2" opacity=".5"/><path d="M32 8l1.6 4.2L38 14l-4.4 1.8L32 20l-1.6-4.2L26 14l4.4-1.8z" fill="#FFD27A"/></svg><b>ULFANA · اولفانا</b><span style="opacity:.6">|</span><span>Student social network + offline Arabic AI tutor</span></div><div class="pg">10 / 18</div></div>
+</div></div></body></html>

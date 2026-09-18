@@ -1,0 +1,50 @@
+<!doctype html><html dir="ltr" lang="en"><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+:root{--brown:#8B5E3C;--brown-d:#5B3A29;--brown-dd:#3a2417;--gold:#FFD27A;--gold-d:#E0A94A;
+--cream:#FBF7F1;--cream2:#F3EADD;--ink:#23201C;--muted:#6E6358;--line:#E5DACB;--ok:#2E9E6B;--no:#CF6A52;--mid:#C99227;--blue:#2C6FB0}
+html,body{width:1280px;height:720px}
+body{font-family:"Open Sans","Noto Sans",sans-serif;color:var(--ink)}
+body.ar{font-family:"Noto Naskh Arabic","Noto Sans Arabic",serif;direction:rtl}
+.slide{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--cream)}
+.pad{position:absolute;inset:0;padding:46px 64px 56px}
+.head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--brown);padding-bottom:12px;margin-bottom:20px}
+.snum{font-size:15px;font-weight:800;color:#fff;background:var(--brown);border-radius:8px;padding:4px 11px;letter-spacing:.5px}
+.ar .snum{letter-spacing:0}
+h1.t{font-size:33px;font-weight:800;color:var(--brown-d);letter-spacing:-.3px;line-height:1.12}
+.ar h1.t{font-family:"Noto Kufi Arabic",sans-serif;letter-spacing:0;font-weight:700}
+.lead{font-size:18px;color:var(--muted);font-weight:600;line-height:1.5}
+.foot{position:absolute;left:64px;right:64px;bottom:20px;display:flex;justify-content:space-between;
+font-size:12px;color:var(--muted);font-weight:700;border-top:1px solid var(--line);padding-top:8px}
+.foot b{color:var(--brown)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.kcard{background:#fff;border:1px solid var(--line);border-inline-start:5px solid var(--brown);border-radius:12px;padding:14px 16px}
+.kcard h3{font-size:16px;color:var(--ink);margin-bottom:4px}
+.kcard p{font-size:13.5px;color:var(--muted);line-height:1.42}
+.ar .kcard h3{font-family:"Noto Kufi Arabic",sans-serif}
+ul.bul{list-style:none}
+ul.bul li{position:relative;padding-inline-start:22px;margin-bottom:11px;font-size:15.5px;line-height:1.45}
+ul.bul li:before{content:"▸";position:absolute;inset-inline-start:0;color:var(--brown);font-weight:900}
+.ar ul.bul li:before{content:"◂"}
+.tag{display:inline-block;background:var(--cream2);border:1px solid var(--line);border-radius:8px;
+padding:5px 11px;font-size:13px;font-weight:700;margin:0 4px 6px 0;color:var(--brown-d)}
+table.cmp{width:100%;border-collapse:collapse;font-size:13.5px}
+table.cmp th,table.cmp td{border:1px solid var(--line);padding:9px 11px;text-align:start}
+table.cmp th{background:var(--cream2);color:var(--brown-d);font-weight:800;font-size:12.5px}
+table.cmp td.c{text-align:center;font-weight:900}
+.yes{color:var(--ok)}.no{color:var(--no)}.par{color:var(--mid)}
+.ulcol{background:rgba(139,94,60,.09)}
+.note{font-size:12px;color:var(--muted);font-style:italic}
+.src{font-size:11px;color:var(--muted)}
+.pill{display:inline-flex;gap:7px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:700;color:var(--brown-d)}
+.slide.title{background:linear-gradient(135deg,#6b462c,var(--brown-d) 60%,var(--brown-dd))}
+.metric{font-size:34px;font-weight:800;color:var(--brown)}
+.flow{display:flex;align-items:stretch;gap:0}
+.fstep{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center;font-size:12.5px;font-weight:700;color:var(--brown-d);line-height:1.3}
+.farr{display:flex;align-items:center;color:var(--brown);font-weight:900;font-size:18px;padding:0 4px}
+.ar .farr{transform:scaleX(-1)}
+</style></head><body class="en"><div class="slide"><div class="pad"><div class="head"><span class="snum">The Talking Library (RAG)</span><h1 class="t">A grounded, offline, Arabic tutor</h1></div>
+      <div style="display:flex;gap:26px">
+        <ul class="bul" style="flex:1.25;margin-top:4px"><li>Hybrid retrieval: BM25 + FAISS HNSW dense vectors, fused by Reciprocal-Rank Fusion (RRF), then a cross-encoder re-rank and a per-user keyword index.</li><li>Multilingual embeddings (paraphrase-multilingual-MiniLM-L12-v2, 384-dim ONNX) enable cross-script Arabic↔English recall.</li><li>Iraqi-dialect answer rewriting (MARBERT); a relevance gate curbs hallucination; RAPTOR layered summaries; semantic answer cache.</li><li>Voice: Piper (offline) + XTTS text-to-speech; Whisper speech-to-text. Default local LLM: Ollama Qwen2.5 (3B/7B/14B).</li></ul>
+        <div style="flex:.85"><img src="file:///home/aymen/Desktop/olfana-presentation/screens/14_chat_live.png" style="width:100%;border:1px solid var(--line);border-radius:12px"/>
+        <div class="note" style="text-align:center;margin-top:8px">A real answer produced by the on-device model — no cloud call.</div></div>
+      </div><div class="foot"><span><b>Ulfana — Academic Brief</b> — Ulfana · Student social network + offline Arabic AI tutor</span><span>5 of 15</span></div></div></div></body></html>
