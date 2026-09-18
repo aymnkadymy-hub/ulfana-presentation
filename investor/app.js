@@ -9,6 +9,37 @@ const growthStyles=document.createElement('link');
 growthStyles.rel='stylesheet';
 growthStyles.href='growth.css';
 document.head.appendChild(growthStyles);
+const polishStyles=document.createElement('link');
+polishStyles.rel='stylesheet';
+polishStyles.href='presentation-polish.css';
+document.head.appendChild(polishStyles);
+const finalStyles=document.createElement('link');
+finalStyles.rel='stylesheet';
+finalStyles.href='presentation-final.css';
+document.head.appendChild(finalStyles);
+const heroFeed=document.querySelector('.card-feed');
+if(heroFeed){
+	const copy=heroFeed.querySelector('b');
+	const detail=heroFeed.querySelector('small');
+	if(copy) copy.textContent='منشورات حسب تخصصك';
+	if(detail) detail.textContent='هندسة الذكاء الاصطناعي · كربلاء';
+}
+const heroAnswer=document.querySelector('.card-answer');
+if(heroAnswer){
+	const label=heroAnswer.querySelector('small');
+	const title=heroAnswer.querySelector('b');
+	if(label) label.textContent='اجوبة نموذجية';
+	if(title) title.textContent='المكتبة الناطقة';
+}
+const heroLead=document.querySelector('.hero-lead');
+if(heroLead) heroLead.textContent='يحتاج اولفانا';
+const storyHeading=document.querySelector('#story h2');
+if(storyHeading) storyHeading.innerHTML='ادوات الطالب مبعثرة<br><em>بين عشرات الأماكن.</em>';
+const demoIntro=document.querySelector('.demo-intro');
+if(demoIntro){
+	demoIntro.querySelectorAll('p:not(.eyebrow)').forEach(p=>p.remove());
+	if(!demoIntro.querySelector('.demo-logo')) demoIntro.insertAdjacentHTML('afterbegin','<img class="demo-logo" src="../assets/logo.png" alt="شعار اولفانا">');
+}
 const productHeading=document.querySelector('#product .section-heading h2');
 if(productHeading) productHeading.textContent='كل ما يحتاجه الطالب في مكان واحد';
 const pathwaySection=document.querySelector('.compare-section');
@@ -20,6 +51,11 @@ const studyDetail=document.querySelector('#pillarDetail');
 if(studyDetail){
 	studyDetail.querySelector('.detail-copy h3').textContent='مو بس يلقالك المعلومة… يساعدك تفهمها.';
 	studyDetail.querySelector('.detail-copy>p:not(.detail-kicker)').textContent='يسأل، يشرح، يبسط، ويرجعك للمصدر حتى تكون المعلومة أوضح وأقرب للدراسة.';
+	const orb=studyDetail.querySelector('.detail-orb');
+	if(orb && !orb.querySelector('img')){
+		orb.textContent='';
+		orb.insertAdjacentHTML('afterbegin','<img src="../assets/logo.png" alt="شعار اولفانا"><i class="core-particle"></i><i class="core-particle"></i><i class="core-particle"></i><i class="core-particle"></i>');
+	}
 }
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}}),{threshold:.12}); $$('.reveal').forEach(el=>revealObserver.observe(el));
 const progress=$('#progressBar'); const topButton=$('[data-top]'); window.addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=`${Math.min(100,scrollY/max*100)}%`;topButton.classList.toggle('visible',scrollY>600)},{passive:true}); topButton.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
