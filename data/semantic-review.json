@@ -1,0 +1,153 @@
+{
+  "status": "complete",
+  "review_date": "2026-09-20",
+  "model": "gemma3:4b",
+  "reviewer": "Codex assistant; direct manual reading, not independent human or blinded review",
+  "reviewed_responses": 408,
+  "rubric": {
+    "C": "جواب مكتمل متوافق مع المصدر وشرح سليم في جوهره.",
+    "P": "صحة جزئية، أو جزء مطلوب مفقود، أو إضافة خاطئة مؤثرة.",
+    "W": "جواب أساسي خاطئ أو عدم إجابة.",
+    "U": "سؤال ملتبس أو مصدر معيب؛ مستبعد من الطرفين."
+  },
+  "groups": [
+    {
+      "id": "ai",
+      "label": "أسئلة البحث في الذكاء الاصطناعي",
+      "total": 100,
+      "eligible": 95,
+      "alone": {
+        "complete": 47,
+        "partial": 18,
+        "wrong_or_no_answer": 30,
+        "excluded": 5
+      },
+      "rag": {
+        "complete": 58,
+        "partial": 24,
+        "wrong_or_no_answer": 13,
+        "excluded": 5
+      }
+    },
+    {
+      "id": "ar",
+      "label": "أسئلة ملف المهارات",
+      "total": 30,
+      "eligible": 30,
+      "alone": {
+        "complete": 24,
+        "partial": 3,
+        "wrong_or_no_answer": 3,
+        "excluded": 0
+      },
+      "rag": {
+        "complete": 20,
+        "partial": 9,
+        "wrong_or_no_answer": 1,
+        "excluded": 0
+      }
+    },
+    {
+      "id": "source-ar",
+      "label": "إعادة صياغة أسئلة المهارات باسم الملف",
+      "total": 30,
+      "eligible": 30,
+      "alone": {
+        "complete": 22,
+        "partial": 3,
+        "wrong_or_no_answer": 5,
+        "excluded": 0
+      },
+      "rag": {
+        "complete": 16,
+        "partial": 7,
+        "wrong_or_no_answer": 7,
+        "excluded": 0
+      }
+    },
+    {
+      "id": "no",
+      "label": "معلومات غير موجودة — امتناع صحيح",
+      "total": 20,
+      "eligible": 20,
+      "alone": {
+        "complete": 20,
+        "partial": 0,
+        "wrong_or_no_answer": 0,
+        "excluded": 0
+      },
+      "rag": {
+        "complete": 19,
+        "partial": 0,
+        "wrong_or_no_answer": 1,
+        "excluded": 0
+      }
+    }
+  ],
+  "base_answer_quality": {
+    "total": 125,
+    "alone": {
+      "complete": 71,
+      "partial": 21,
+      "wrong_or_no_answer": 33,
+      "excluded": 5
+    },
+    "rag": {
+      "complete": 78,
+      "partial": 33,
+      "wrong_or_no_answer": 14,
+      "excluded": 5
+    }
+  },
+  "conversation": {
+    "prompts": 24,
+    "conversations": 8,
+    "responses": 48,
+    "alone": {
+      "complete": 8,
+      "partial": 11,
+      "wrong_or_no_answer": 5,
+      "excluded": 0
+    },
+    "rag": {
+      "complete": 9,
+      "partial": 9,
+      "wrong_or_no_answer": 6,
+      "excluded": 0
+    },
+    "book_returned": 18,
+    "web_used": 4,
+    "complete_with_fully_supporting_passage": 6
+  },
+  "book_attribution": {
+    "returned": 23,
+    "full_page_supports_core": 9,
+    "saved_snippet_supports_core": 8,
+    "unsupported_page": 14,
+    "scope": "130 original answerable prompts, 23 book-returning replies. Main answer support is distinct from correctness of every added claim."
+  },
+  "method": [
+    "قراءة 360 جوابًا محفوظًا، ثم 48 جوابًا جديدًا في 8 محادثات من ثلاث رسائل لكل طرف.",
+    "تقييم معنى الجواب واكتماله وشرحه بمقارنة النص الفعلي من المصدر؛ الحرف الصحيح أو الصفحة الصحيحة وحدهما لا يكفيان.",
+    "24 سؤال محادثة مفتوحًا بلا اختيارات، مع مرجع مطلوب محدد قبل التشغيل؛ كل طرف يحتفظ بسياق أجوبته السابقة.",
+    "أسئلة الحوار تشمل الأجيال والتصنيفات والذاكرة والوحدات والحاسبات الصغيرة والتخزين والبرامج والملفات.",
+    "النموذج المجرد بلا الملف. أولفانا تستخدم المسار الحي بكتب المستخدم وقد تستخدم الويب أو معالجة مباشرة. المقارنة للنظام الكامل، وليست عزلًا سببيًا لـRAG.",
+    "يُفصل دعم المقطع المسترجع عن صحة محتوى الجواب. لا تُحسب إجابة من المعرفة العامة إسنادًا موثقًا للكتاب."
+  ],
+  "limitations": [
+    "عينة استكشافية محلية بنموذج واحد، مراجِع آلي واحد غير معمى؛ لا تمثل دقة عامة أو دراسة مستقلة.",
+    "الأسئلة الثلاثون المعاد صياغتها ليست أسئلة مستقلة جديدة، ورسائل المحادثة مترابطة. لا تدمج النسب بينها.",
+    "استُبعدت خمسة أسئلة AI ذات افتراضات ناقصة أو صياغة/استخراج ملتبس من الطرفين؛ القائمة منشورة مع الدرجات.",
+    "تقييم الوفاء بالمصدر لا يصحح خطأ المصدر نفسه؛ مثال تعريف DPI في ملف المهارات.",
+    "المقاطع الكاملة لجميع مراتب الاسترجاع غير محفوظة؛ لا تُستنتج recall أو دقة الاسترجاع الشاملة من هذه السجلات.",
+    "المحادثات ليست دليلًا على تفوق شامل؛ المثال المعروض حالة نجاح محددة، وجميع درجات العينة متاحة."
+  ],
+  "example": {
+    "case": "chat-minicomputers-1",
+    "question": "متى ظهرت الحاسبات الصغيرة، وهل كانت عامة الاستخدام منذ البداية؟",
+    "alone_summary": "ذكر عام 1977، وربط البداية بتطوير البرمجيات.",
+    "library_summary": "ذكر مطلع الستينيات، وشرح انتقالها من التخصص إلى الاستخدامات العامة.",
+    "source": "ملف المهارات، ص 5",
+    "judgment": "الأول يخالف النص؛ الثاني يطابقه ويستند إلى فقرة مسترجعة داعمة. ملخص تحريري للأجوبة، لا اقتباس حرفي."
+  }
+}

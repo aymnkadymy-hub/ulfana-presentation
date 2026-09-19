@@ -1,0 +1,2445 @@
+{
+  "rubric": {
+    "C": "جواب مكتمل متوافق مع المصدر وشرح سليم في جوهره.",
+    "P": "صحة جزئية، أو جزء مطلوب مفقود، أو إضافة خاطئة مؤثرة.",
+    "W": "جواب أساسي خاطئ أو عدم إجابة.",
+    "U": "سؤال ملتبس أو مصدر معيب؛ مستبعد من الطرفين."
+  },
+  "grades": [
+    {
+      "id": "ai001",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai002",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai003",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai004",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Both choose planning instead of the textbook search term; library adds unrelated file operations.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai005",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai006",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai007",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Both miss the five-component reference formulation; library substitutes another field’s model.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai008",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai009",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library defines initial state correctly, then incorrectly supports it with information-processing text.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai010",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core answer correct, but cited computer-skills page does not support the AI transition-model claim. Attribution failure tracked separately.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai011",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare answer says successful goal test triggers neighbor expansion; contradicts goal stopping.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai012",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai013",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai014",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai015",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare explanation reduces a search tree to a single specific path.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai016",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai017",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library explanation drifts into project execution and unrelated keyboard shortcuts.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai018",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library contrasts completeness with heuristic search in a way that wrongly suggests heuristic search cannot be complete.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai019",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai020",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library justification is about storage sizes/registers rather than time complexity.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai021",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai022",
+      "alone": "C",
+      "rag": "W",
+      "reason": "Library selects reference letter but changes maximum branching factor to average; does not match this benchmark definition.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai023",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai024",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai025",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare explanation conflates the cost of an arbitrary path with the shortest path.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai026",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai027",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai028",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai029",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Scored against the uploaded bank’s incremental n-queens formulation; other formulations exist.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai030",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Both confuse number of conflicts with path cost in the bank’s formulation.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai031",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Library picks the right letter but justifies it with unrelated file operations, never explaining allowed mathematical operations.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai032",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Reference option matches, but app-store provenance does not establish the textbook example.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai033",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai034",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai035",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai036",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai037",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai038",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai039",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core TSP explanation is sound; claim that the computer-skills PDF explains NP-hard TSP is unsupported.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai040",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare explanation inaccurately calls uninformed search random.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai041",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Bare explanation describes keyword/web search instead of heuristic state-space search; library adds a false Command Prompt analogy.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai042",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai043",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai044",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai045",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai046",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai047",
+      "alone": "C",
+      "rag": "W",
+      "reason": "BFS accepted under the usual finite-branching assumption; library confuses DLS with iterative cost-bound search.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai048",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Both identify BFS but fail to give a reliable, clearly specified complexity answer to the second part.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai049",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai050",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai051",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai052",
+      "alone": "U",
+      "rag": "U",
+      "reason": "Excluded: without cycle detection or a finite solution, both BFS and DFS may run forever; prompt lacks a discriminating setup.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai053",
+      "alone": "U",
+      "rag": "U",
+      "reason": "Excluded: repeated paths are possible in both BFS and DFS; no visited-set assumption specified.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai054",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai055",
+      "alone": "C",
+      "rag": "W",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai056",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Both identify DFS memory advantage but do not state the requested memory-complexity bound; bare answer supplies graph runtime instead.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai057",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library adds an unrelated Command Prompt quotation to explain DLS.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai058",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai059",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare explanation switches DLS to Dynamic Linear System.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai060",
+      "alone": "P",
+      "rag": "W",
+      "reason": "Bare selects the key but switches DLS to a groundwater concept; library uses taskbar settings to justify a wrong option.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai061",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Library writes the DLS option letter but names DFS instead; inconsistent specificity.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai062",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai063",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Library names IDDFS correctly but writes the DLS option letter, an internal choice/content contradiction.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai064",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai065",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai066",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Bare uses estimated total f-cost rather than cumulative UCS cost; library invents a priority-queue analogy for binary/ASCII conversion.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai067",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai068",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai069",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library inserts an unrelated Command Prompt passage as an explanation of bidirectional search.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai070",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai071",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai072",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Library adds an unjustified universal claim that bidirectional search is the most efficient method.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai073",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library confuses halving search depth with halving the number of explored states. PDF extraction also flattens exponents; judged on intended statement and prose, not typography.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai074",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Bare omits equal-cost requirement; library supplies it but invents a source disagreement from publication years.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai075",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai076",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare incorrectly says heuristic functions are necessarily admissible.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai077",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai078",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library calls UCS an informed heuristic search.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai079",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Correct Greedy formula in library answer, but its keyboard-shortcut justification is irrelevant.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai080",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai081",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core priority-queue answer is sound; cited computer-skills pages 27/40 do not describe heuristic search.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai082",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai083",
+      "alone": "U",
+      "rag": "U",
+      "reason": "Excluded: reference promises best-first is more efficient than both BFS and DFS without conditions, which is not generally true.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai084",
+      "alone": "U",
+      "rag": "U",
+      "reason": "Excluded: h(n)=0 does not imply a goal state; the zero heuristic is a counterexample. Both follow the flawed key.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai085",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai086",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library overstates that using g+h alone ensures optimality, without heuristic conditions.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai087",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai088",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Library links completeness to heuristic quality, rather than stating the relevant search/cost assumptions.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai089",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai090",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare explanation changes true optimal cost to best-known path cost, which can exceed optimum.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai091",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Bare restricts consistency to a goal state instead of every successor; library incorrectly infers a metric merely from the consistency inequality.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai092",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare defines consistency as evaluating equally good solutions similarly, not the edgewise inequality.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai093",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai094",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai095",
+      "alone": "U",
+      "rag": "U",
+      "reason": "Excluded: PDF extraction flattened the exponent in the question/options; both repeat ambiguous O(bd).",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai096",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Bare says each binary-tree node has exactly two children; library justifies branching with keyboard shortcuts.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai097",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare wrongly claims any expanded path must reach a solution and every admissible estimate is positive.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai098",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Bare overstates unconditional A* optimality; library additionally says Greedy uses g only, contradicting h.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai099",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Library incorrectly describes UCS expansion as level-by-level.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ai100",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar001",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar002",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar003",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library overgeneralizes that special-purpose computers are more expensive and provide superior processing power; specialization alone does not imply this.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar004",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "ar005",
+      "alone": "C",
+      "rag": "W",
+      "reason": "The source describes hybrid analog inputs/outputs and digital processing; bare answer follows this formulation. Library substitutes hardware/software.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar006",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare invents a Simpsons calculator and conflates 1960s minicomputers with portable PCs.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "ar007",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Bare explicitly answers 4 then says 8, an unresolved core contradiction.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar008",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar009",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "ar010",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar011",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library conflates ALU circuitry with the register subsystem while describing what it consists of.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar012",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "ar013",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library explicitly calls USB a wireless connection.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar014",
+      "alone": "C",
+      "rag": "P",
+      "reason": "The capacity range is present on page 13; the added claim of harsh-environment reliability is not supported and is overgeneralized.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "ar015",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "ar016",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar017",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar018",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library gives the right option but quotes printer categories instead of explaining pixel resolution.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar019",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar020",
+      "alone": "C",
+      "rag": "C",
+      "reason": "DPI per square inch repeats an error in the source itself (page 17); not a model-added error. Source-faithful, but not an endorsement of this technical definition.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "ar021",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar022",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar023",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare incorrectly includes macOS in the F2 rename claim; Finder uses Return.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar024",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Bare implies cutting immediately deletes the source file; library additionally says cutting shrinks files and enables copying/switching.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar025",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library writes wrong option letter B but correct Ctrl+C text; also blurs copying with moving/selection.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar026",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar027",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar028",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library confuses Windows Explorer with a web browser and says refresh removes server changes.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar029",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "ar030",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library assigns reverse cycling to Alt+Tab without the Shift modifier.",
+      "book_source": {
+        "returned": true,
+        "full_page_supports_core": true,
+        "saved_snippet_supports_core": true
+      }
+    },
+    {
+      "id": "no001",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no002",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no003",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no004",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no005",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no006",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no007",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no008",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no009",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no010",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no011",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no012",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no013",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no014",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no015",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no016",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no017",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no018",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no019",
+      "alone": "C",
+      "rag": "W",
+      "reason": "Library invents version 1440 before denying access; not a correct abstention.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "no020",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false,
+        "full_page_supports_core": false,
+        "saved_snippet_supports_core": false
+      }
+    },
+    {
+      "id": "source-ar001",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Bare invents page 42; core correct. Provenance scored separately.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar002",
+      "alone": "P",
+      "rag": "P",
+      "reason": "Both add incorrect generation descriptions.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar003",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar004",
+      "alone": "C",
+      "rag": "W",
+      "reason": "Library replaces analog with textual computer.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar005",
+      "alone": "C",
+      "rag": "W",
+      "reason": "Library lists books instead of answering.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar006",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Bare says 1940s; library says 1960s but invents portable-PC narrative.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar007",
+      "alone": "W",
+      "rag": "P",
+      "reason": "Bare says 4 bits; library says correct 8 but conflicting choice letter.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar008",
+      "alone": "W",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar009",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar010",
+      "alone": "P",
+      "rag": "C",
+      "reason": "Bare falsely says control unit controls PDF layout.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar011",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library reverses ALU/CPU hierarchy.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar012",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar013",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library wrongly adds HDMI/VGA as external disk connections.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar014",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar015",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar016",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library confuses image digitization with OCR.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar017",
+      "alone": "C",
+      "rag": "W",
+      "reason": "Library says printing and explicitly denies audio input.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar018",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar019",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar020",
+      "alone": "C",
+      "rag": "P",
+      "reason": "Library calls PDF and JPEG printing protocols.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar021",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar022",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar023",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Both give F5 instead of F2.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar024",
+      "alone": "W",
+      "rag": "W",
+      "reason": "Both miss Ctrl+X.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar025",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar026",
+      "alone": "P",
+      "rag": "W",
+      "reason": "Bare identifies Ctrl+V but invents PDF-specific context; library says Ctrl+S.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar027",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Bare invents page 15; correct shortcut. Provenance scored separately.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar028",
+      "alone": "C",
+      "rag": "W",
+      "reason": "Library gives F3 instead of F5.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar029",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    },
+    {
+      "id": "source-ar030",
+      "alone": "C",
+      "rag": "C",
+      "reason": "Core content compared with reference; source attribution is separate.",
+      "book_source": {
+        "returned": false
+      }
+    }
+  ],
+  "conversation_grades": [
+    {
+      "id": "chat-generations-1",
+      "conversation": "generations",
+      "turn": 1,
+      "question": "من ملف المهارات الذي رفعته، اشرح الفرق بين الجيل الثاني والثالث من الحاسبات ببساطة. ركز على المكوّن الإلكتروني، ولا تضف تواريخ غير مطلوبة.",
+      "reference_pages": [
+        3
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Correct transistor/IC core but invented dates contradict source and request; falsely claims file access.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "W",
+        "reason": "Abstains although page 3 contains the answer.",
+        "source_support": "none"
+      },
+      "returned_book": false,
+      "used_web": false
+    },
+    {
+      "id": "chat-generations-2",
+      "conversation": "generations",
+      "turn": 2,
+      "question": "طيب، ما فائدتان للجيل الثاني يذكرهما الملف مقارنة بالجيل الأول؟",
+      "reference_pages": [
+        3
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Size matches source; reliability is not one of the benefits in this paragraph.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Speed matches; energy efficiency is not listed. Cites software page 19, unrelated.",
+        "source_support": "none"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-generations-3",
+      "conversation": "generations",
+      "turn": 3,
+      "question": "لخص ما فهمناه الآن في جملتين قصيرتين لطالب مبتدئ، من دون أن تبدّل بين الجيلين.",
+      "reference_pages": [
+        3
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Generic progress summary omits both required generation components.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Omits transistor and integrated circuits; only discusses second generation. No retrieved source.",
+        "source_support": "none"
+      },
+      "returned_book": false,
+      "used_web": false
+    },
+    {
+      "id": "chat-types-1",
+      "conversation": "types",
+      "turn": 1,
+      "question": "اشرح لي من ملف المهارات الفرق بين الحاسوب الرقمي والتناظري والهجين، بكلام بسيط.",
+      "reference_pages": [
+        4
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Clearly describes all three types, explicitly as general knowledge.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "All three definitions match page 4; useful concise explanation.",
+        "source_support": "full"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-types-2",
+      "conversation": "types",
+      "turn": 2,
+      "question": "وفق تصنيف الملف، أي واحد يناسب معالجة تغير درجات الحرارة باستمرار؟ ولماذا؟",
+      "reference_pages": [
+        4
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Correct analog classification, but categorical greater accuracy is not established by source.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Correct analog classification; adds unsupported inability/inefficiency claims about digital and hybrid systems.",
+        "source_support": "partial"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-types-3",
+      "conversation": "types",
+      "turn": 3,
+      "question": "لا أريد أن أخلط بين هذا التصنيف والأغراض الخاصة: ما الفرق بين الحاسوب العام والخاص حسب الملف؟",
+      "reference_pages": [
+        4
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Core general versus dedicated distinction is correct; provenance claim unverified.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "Correct general versus specialized distinction. Saved page 5 examples indirectly illustrate this but do not give the definition from page 4.",
+        "source_support": "partial"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-memory-1",
+      "conversation": "memory",
+      "turn": 1,
+      "question": "في ملف المهارات، ما الفرق بين RAM وROM؟ اشرح ما يحصل لكل منهما إذا انقطعت الكهرباء.",
+      "reference_pages": [
+        11,
+        12
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Accurate RAM/ROM and power-loss comparison; explicitly general knowledge.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Correct power-loss contrast; adds ambiguous unsupported operating-system-in-ROM claim. Book snippet only covers RAM; web also used.",
+        "source_support": "partial"
+      },
+      "returned_book": true,
+      "used_web": true
+    },
+    {
+      "id": "chat-memory-2",
+      "conversation": "memory",
+      "turn": 2,
+      "question": "إذن هل يكفي أن تكون ملاحظاتي مفتوحة في RAM كي تبقى بعد إطفاء الجهاز؟ وضح لي التصرف المناسب.",
+      "reference_pages": [
+        11,
+        12
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Correctly says RAM is insufficient, but omits requested action of saving to permanent storage and calls power loss a flush.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Correct warning but omits save action; contradicts itself with not-found preamble followed by citation.",
+        "source_support": "partial"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-memory-3",
+      "conversation": "memory",
+      "turn": 3,
+      "question": "قارِن الآن RAM بالقرص الصلب في سطرين: أين أعمل مؤقتًا وأين أحفظ عملًا أحتاجه غدًا؟",
+      "reference_pages": [
+        11,
+        12
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Accurate concise temporary RAM versus lasting disk comparison.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "Accurate comparison; retrieved page 11 only establishes RAM half, disk description is on page 12.",
+        "source_support": "partial"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-units-1",
+      "conversation": "units",
+      "turn": 1,
+      "question": "في مثال الفلاش ميموري بملف المهارات، كيف حوّل الكتاب 2GB إلى MB؟ أريد خطوات الحساب، لا النتيجة فقط.",
+      "reference_pages": [
+        7
+      ],
+      "alone": {
+        "grade": "W",
+        "reason": "Divides instead of multiplies and gives wrong arithmetic and units.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "W",
+        "reason": "Retrieved correct worked example on page 7 but replaces it with incorrect unit relationships.",
+        "source_support": "none"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-units-2",
+      "conversation": "units",
+      "turn": 2,
+      "question": "باستخدام الجدول نفسه، كم بتًا في بايت واحد؟ وكم بتًا في بايتين؟",
+      "reference_pages": [
+        7
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Answers 8 and 16 correctly.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Answers first part only (8); omits two-byte conversion. No book metadata on this direct response.",
+        "source_support": "none"
+      },
+      "returned_book": false,
+      "used_web": false
+    },
+    {
+      "id": "chat-units-3",
+      "conversation": "units",
+      "turn": 3,
+      "question": "إذا قلت إن 2GB تساوي 1024MB، فأين خطئي حسب المثال؟ صححه لي ببساطة.",
+      "reference_pages": [
+        7
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Correct 2048 result but contradictory opening denies 1GB=1024MB.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "W",
+        "reason": "Confuses conversion with ASCII symbol B; wrong cited page 6.",
+        "source_support": "none"
+      },
+      "returned_book": true,
+      "used_web": true
+    },
+    {
+      "id": "chat-minicomputers-1",
+      "conversation": "minicomputers",
+      "turn": 1,
+      "question": "حسب فقرة الحاسبات الصغيرة في ملف المهارات، متى ظهرت؟ وهل كانت منذ البداية للأغراض العامة؟",
+      "reference_pages": [
+        5
+      ],
+      "alone": {
+        "grade": "W",
+        "reason": "Invents 1977 and software-development origin, unlike source early 1960s.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "Matches early 1960s and specialized-to-general progression; retrieved paragraph directly supports explanation.",
+        "source_support": "full"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-minicomputers-2",
+      "conversation": "minicomputers",
+      "turn": 2,
+      "question": "اذكر ثلاثة استخدامات وردت في تلك الفقرة نفسها، لا أمثلة من خارجها.",
+      "reference_pages": [
+        5
+      ],
+      "alone": {
+        "grade": "W",
+        "reason": "Invents three uses not in the requested paragraph.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "W",
+        "reason": "Loses follow-up context and lists taskbar/mouse items from unrelated page 26.",
+        "source_support": "none"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-minicomputers-3",
+      "conversation": "minicomputers",
+      "turn": 3,
+      "question": "هل يصح أن ألخصها بأنها بدأت متخصصة ثم توسّعت استخداماتها؟ اشرح لي سبب ذلك من الفقرة.",
+      "reference_pages": [
+        5
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Correct broad progression but repeats invented uses and misses source flexibility explanation.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "Explains growth through flexibility, consistent with page 5. Some extra narrative, but the required conclusion is supported.",
+        "source_support": "full"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-storage-1",
+      "conversation": "storage",
+      "turn": 1,
+      "question": "كيف أوصل قرصًا صلبًا خارجيًا بالحاسوب حسب ملف المهارات؟ وما فائدة يذكرها لهذا القرص؟",
+      "reference_pages": [
+        12,
+        13
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Correct USB and backup purpose; distinguishes general knowledge from unavailable source.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "USB cable and backup explanation match the retrieved paragraph on page 12.",
+        "source_support": "full"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-storage-2",
+      "conversation": "storage",
+      "turn": 2,
+      "question": "هل ذكر النص أن توصيل هذا القرص يكون عبر HDMI أو VGA؟ ميّز ما ورد في الملف عما لم يرد.",
+      "reference_pages": [
+        12,
+        13
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Correct USB versus video connectors, though asserts absence in an unread source.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "Correctly retains USB from previous turn; previous retrieved page 12 supports the distinction. Current response also uses web, so this is prior-turn book support.",
+        "source_support": "full"
+      },
+      "returned_book": false,
+      "used_web": true
+    },
+    {
+      "id": "chat-storage-3",
+      "conversation": "storage",
+      "turn": 3,
+      "question": "وما استخدام بطاقة الذاكرة الوميضية في الملف؟ أعطني نوعين من البيانات التي تحفظها.",
+      "reference_pages": [
+        12,
+        13
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Confuses memory card with USB flash drive, omits camera/mobile and names documents absent from requested paragraph.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Gives two matching data types but omits requested camera/mobile use; no retrieval despite information on page 13.",
+        "source_support": "none"
+      },
+      "returned_book": false,
+      "used_web": false
+    },
+    {
+      "id": "chat-software-1",
+      "conversation": "software",
+      "turn": 1,
+      "question": "حسب ملف المهارات، ما الفرق بين نظام التشغيل والبرنامج التطبيقي؟ اشرح أين يقع Word في هذا التقسيم.",
+      "reference_pages": [
+        19
+      ],
+      "alone": {
+        "grade": "C",
+        "reason": "Correct OS/application distinction and Word classification; final unnecessary caveat does not negate main answer.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "Correct distinction and Word classification. Current turn uses web, not a retrieved book passage.",
+        "source_support": "none"
+      },
+      "returned_book": false,
+      "used_web": true
+    },
+    {
+      "id": "chat-software-2",
+      "conversation": "software",
+      "turn": 2,
+      "question": "أعطني ثلاث مهام لنظام التشغيل وردت في الصفحة، وليس قائمة عامة من ذاكرتك.",
+      "reference_pages": [
+        19
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Generic OS list; does not reproduce three functions in the source paragraph.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "C",
+        "reason": "Three duties match page 19: boot, error logging, access control; retrieved paragraph directly supports.",
+        "source_support": "full"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-software-3",
+      "conversation": "software",
+      "turn": 3,
+      "question": "رتب لي الرحلة التي يشرحها النص: المستخدم، البرنامج التطبيقي، نظام التشغيل، المكونات المادية. من يستقبل أمر المستخدم أولًا؟",
+      "reference_pages": [
+        19
+      ],
+      "alone": {
+        "grade": "W",
+        "reason": "Reverses requested flow and says OS receives command first; source says application.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "W",
+        "reason": "Retrieved the correct page 19 passage but still names OS first and reverses application-to-OS flow.",
+        "source_support": "none"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-files-1",
+      "conversation": "files",
+      "turn": 1,
+      "question": "أراجع ملف المهارات: كيف أنسخ ملفًا إلى مجلد آخر باختصارات لوحة المفاتيح؟ أعطني الخطوات بالترتيب.",
+      "reference_pages": [
+        36,
+        37
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Correct copy/paste and destination, but omits initial selection and overgeneralizes Ctrl shortcuts to macOS.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Gives copy/paste keys but calls Ctrl+C selection and does not supply complete ordered steps.",
+        "source_support": "partial"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-files-2",
+      "conversation": "files",
+      "turn": 2,
+      "question": "وإذا أردت نقله بدل الاحتفاظ بنسختين، فما الاختصار الذي يتغير؟",
+      "reference_pages": [
+        36,
+        37
+      ],
+      "alone": {
+        "grade": "W",
+        "reason": "Uses Ctrl+Shift+V instead of Ctrl+X then Ctrl+V.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "W",
+        "reason": "Answers undo/delete instead of move, losing the preceding turn’s context.",
+        "source_support": "none"
+      },
+      "returned_book": true,
+      "used_web": false
+    },
+    {
+      "id": "chat-files-3",
+      "conversation": "files",
+      "turn": 3,
+      "question": "ذكّرني من الملف باختصار إعادة التسمية واختصار التراجع، كل واحد بجانب وظيفته.",
+      "reference_pages": [
+        36,
+        37
+      ],
+      "alone": {
+        "grade": "P",
+        "reason": "Correct Ctrl+Z but wrong rename Ctrl+R.",
+        "source_support": "none"
+      },
+      "rag": {
+        "grade": "P",
+        "reason": "Omits F2 despite retrieval and conflates undo with redo; incomplete two-part answer.",
+        "source_support": "partial"
+      },
+      "returned_book": true,
+      "used_web": false
+    }
+  ]
+}

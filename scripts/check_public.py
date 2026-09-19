@@ -264,6 +264,40 @@ def reconcile_expanded() -> None:
         fail(ep, f'cannot reconcile expanded benchmark: {type(exc).__name__}')
 
 
+
+def reconcile_semantic() -> None:
+    owner = SITE/'data'/'semantic-review.json'
+    try:
+        d=json.loads(owner.read_text())
+        g=json.loads((SITE/'data'/'semantic-grades.json').read_text())
+        rows=g['grades']; chats=g['conversation_grades']
+        assert len(rows)==180 and len(chats)==24
+        assert len({r['id'] for r in rows+chats})==204
+        assert d['reviewed_responses']==2*(len(rows)+len(chats))==408
+        for group in d['groups']:
+            subset=[r for r in rows if r['id'].startswith(group['id'])]
+            assert len(subset)==group['total']
+            assert group['eligible']==sum(r['alone']!='U' for r in subset)
+            for arm in ['alone','rag']:
+                for key,code in [('complete','C'),('partial','P'),('wrong_or_no_answer','W'),('excluded','U')]:
+                    assert group[arm][key]==sum(r[arm]==code for r in subset)
+        base=[r for r in rows if r['id'].startswith(('ai','ar'))]
+        assert d['base_answer_quality']['total']==sum(r['alone']!='U' for r in base)
+        for arm in ['alone','rag']:
+            assert d['base_answer_quality'][arm]['complete']==sum(r[arm]=='C' for r in base)
+            for key,code in [('complete','C'),('partial','P'),('wrong_or_no_answer','W')]:
+                assert d['conversation'][arm][key]==sum(r[arm]['grade']==code for r in chats)
+        assert d['conversation']['complete_with_fully_supporting_passage']==sum(r['rag']['grade']=='C' and r['rag']['source_support']=='full' for r in chats)
+        assert d['conversation']['book_returned']==sum(r['returned_book'] for r in chats)
+        assert d['conversation']['web_used']==sum(r['used_web'] for r in chats)
+        assert len({r['conversation'] for r in chats})==d['conversation']['conversations']==8
+        for name in {r['conversation'] for r in chats}:
+            assert sorted(r['turn'] for r in chats if r['conversation']==name)==[1,2,3]
+        assert d['method'] and d['limitations']
+    except (OSError,KeyError,TypeError,AssertionError,json.JSONDecodeError) as exc:
+        fail(owner,f'semantic review reconciliation failed: {type(exc).__name__}')
+
+
 def main() -> int:
     if not SITE.is_dir():
         print(json.dumps({'status':'not_built','package':str(SITE),'message':'Run once _site exists.'},ensure_ascii=False,indent=2))
@@ -325,6 +359,7 @@ def main() -> int:
     else:
         reconcile_grades()
     reconcile_expanded()
+    reconcile_semantic()
     unique_records = list({json.dumps(x,sort_keys=True):x for x in RECORDS}.values())
     print(json.dumps({'status':'passed' if not ERRORS else 'blocked','files_checked':count,'references_checked':len(unique_records),'errors':sorted(set(ERRORS)),'warnings':sorted(set(WARNINGS)),'documents':[x for x in unique_records if x['kind']=='document'],'local_server_links':[x for x in unique_records if x['kind']=='local_server_link'],'anchors_recorded':sum(x['kind']=='anchor' for x in unique_records),'limitations':['Static checks cannot inspect private information embedded in images or PDFs.','Computed JS asset URLs and interactive states require browser QA.']},ensure_ascii=False,indent=2))
     return 1 if ERRORS else 0

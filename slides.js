@@ -27,7 +27,7 @@ $('#next').onclick=()=>go(current+1); $('#previous').onclick=()=>go(current-1);
 document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>go(current+1));
 document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(Number(b.dataset.go)));
 $('#overview').onclick=()=>showDialog($('#index-dialog'));
-document.querySelectorAll('[data-evidence]').forEach(b=>b.onclick=()=>{showDialog($('#evidence-dialog'));loadEvidence();});
+document.querySelectorAll('[data-evidence]').forEach(b=>b.onclick=async()=>{showDialog($('#evidence-dialog'));await loadEvidence();if(b.classList.contains('example-link'))$('#semantic-evidence').scrollIntoView({block:'start'});});
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeDialog(b.closest('dialog')));
 dialogs.forEach(d=>{d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog(d);}});d.addEventListener('cancel',()=>{if(returnFocus?.isConnected)returnFocus.focus();});});
 window.addEventListener('hashchange',fromHash);
@@ -56,8 +56,8 @@ let flipped=false;$('#flip-card').onclick=()=>{flipped=!flipped;$('#flip-card').
 document.querySelectorAll('[data-companion]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-companion]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('#companion-main').src=`assets/companions/${b.dataset.companion}.svg`;$('#companion-main').alt=b.dataset.name;$('#companion-name').textContent=b.dataset.name;});
 let evidenceLoaded=false;
 async function loadEvidence(){if(evidenceLoaded)return;
- const results=await Promise.allSettled([fetch('data/expanded-benchmark.json').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('data/historical-benchmarks.json').then(r=>{if(!r.ok)throw Error();return r.json();})]);
- const [expanded,historic]=results;
+ const results=await Promise.allSettled([fetch('data/expanded-benchmark.json').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('data/historical-benchmarks.json').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('data/semantic-review.json').then(r=>{if(!r.ok)throw Error();return r.json();})]);
+ const [expanded,historic,semantic]=results;
  if(expanded.status==='fulfilled'){
   const d=expanded.value, box=$('#expanded-results');box.replaceChildren();
   const p=document.createElement('p');p.textContent=d.description;box.append(p);
@@ -70,7 +70,24 @@ async function loadEvidence(){if(evidenceLoaded)return;
   $('#historic-models').replaceChildren();
   for(const [id,v]of Object.entries(d.models)){const row=document.createElement('div');row.className='mini-model';const label=document.createElement('span');label.textContent=names[id]||id;const bar=document.createElement('i');bar.style.width=`${v.hit/v.of*45}%`;const count=document.createElement('b');count.textContent=`${v.hit}/${v.of}`;row.append(label,bar,count);$('#historic-models').append(row);}
  }
- evidenceLoaded=expanded.status==='fulfilled'&&historic.status==='fulfilled';
+ if(semantic.status==='fulfilled'){
+  const d=semantic.value,box=$('#semantic-results');box.replaceChildren();
+  const fig=document.createElement('figure');fig.className='quality-chart';
+  const cap=document.createElement('figcaption');cap.textContent='جواب مكتمل وشرح سليم وفق المصدر';fig.append(cap);
+  for(const [arm,label]of [['alone','Gemma وحده'],['rag','مع أولفانا']]){
+   const n=d.base_answer_quality[arm].complete,total=d.base_answer_quality.total;
+   const row=document.createElement('div');row.className='quality-row';
+   const name=document.createElement('span');name.textContent=label;
+   const track=document.createElement('div');track.className='quality-track';const bar=document.createElement('i');bar.style.width=`${n/total*100}%`;track.append(bar);
+   const count=document.createElement('b');count.textContent=`${n}/${total}`;row.append(name,track,count);fig.append(row);
+  }
+  const note=document.createElement('small');note.textContent='الأسئلة الأصلية للملفين · 125 سؤالًا بعد استبعاد 5 أسئلة ملتبسة من الطرفين · المحور 0–100% · أولفانا تشمل الكتب والويب';fig.append(note);box.append(fig);
+  const c=d.conversation,p=document.createElement('p');p.textContent=`في المحادثات المفتوحة: ${c.alone.complete} من 24 جوابًا مكتملًا للنموذج وحده، و${c.rag.complete} مع أولفانا. المراجعة تشمل المعنى والشرح، وليست مجرد مطابقة كلمات أو أرقام صفحات.`;box.append(p);
+  const table=document.createElement('table');table.className='result-table semantic-table';table.innerHTML='<thead><tr><th>المجموعة</th><th>وحده</th><th>أولفانا</th></tr></thead>';const body=document.createElement('tbody');
+  for(const g of d.groups){const tr=document.createElement('tr');for(const value of [g.label,`${g.alone.complete}/${g.eligible}`,`${g.rag.complete}/${g.eligible}`]){const td=document.createElement('td');td.textContent=value;tr.append(td);}body.append(tr);}table.append(body);box.append(table);
+  const limits=document.createElement('p');limits.className='review-note';limits.textContent='مراجعة مباشرة أجراها المساعد، غير معماة، بنموذج واحد. أسئلة إعادة الصياغة ورسائل المتابعة ليست عينات مستقلة. إسناد الجواب للمصدر يُراجع منفصلًا عن صحة معناه. لا تعزل هذه المقارنة أثر RAG وحده.';box.append(limits);
+ }else{$('#semantic-results').textContent='يمكنك تنزيل المراجعة من الرابط أدناه.';}
+ evidenceLoaded=expanded.status==='fulfilled'&&historic.status==='fulfilled'&&semantic.status==='fulfilled';
 }
 document.documentElement.classList.add('js');fromHash();
 })();
