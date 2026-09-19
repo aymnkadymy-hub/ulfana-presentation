@@ -1,0 +1,160 @@
+{
+  "status": "complete",
+  "date": "2026-09-19",
+  "model": "gemma3:4b",
+  "description": "150 سؤالًا أساسيًا على ملفين PDF، ثم 30 إعادة صياغة تشترط الرجوع إلى الكتاب: 360 إجابة معتمدة بالمجموع. المقارنة بين Gemma 3 4B مباشرةً وبين مسار المكتبة الحي الكامل الذي يمكنه استخدام الكتب والويب والمعرفة العامة.",
+  "sample": {
+    "base_unique_questions": 150,
+    "answerable_mcq": 130,
+    "unanswerable": 20,
+    "source_bound_rephrasings": 30,
+    "paired_prompts": 180,
+    "accepted_responses": 360,
+    "total_attempts": 362,
+    "excluded_parser_attempts": 2,
+    "pdf_files": 2,
+    "pdf_pages": 65
+  },
+  "documents": [
+    {
+      "label": "بنك أسئلة خوارزميات البحث",
+      "pages": 21,
+      "indexed_chunks": 23
+    },
+    {
+      "label": "المنهاج الأساسي للتدريب على قيادة الحاسوب",
+      "pages": 44,
+      "indexed_chunks": 127
+    }
+  ],
+  "groups": [
+    {
+      "domain": "ai_search",
+      "label": "خوارزميات البحث · مطابقة مفتاح 100 سؤال",
+      "total": 100,
+      "alone": {
+        "correct": 68,
+        "failed_requests": 0,
+        "median_seconds": 1.608,
+        "p95_seconds": 2.525,
+        "book_attribution_count": 0,
+        "web_attribution_count": 0,
+        "reference_book_attribution_count": 0,
+        "reference_page_metadata_count": 0
+      },
+      "rag": {
+        "correct": 87,
+        "failed_requests": 0,
+        "median_seconds": 8.184,
+        "p95_seconds": 11.475,
+        "book_attribution_count": 10,
+        "web_attribution_count": 79,
+        "reference_book_attribution_count": 0,
+        "reference_page_metadata_count": 0
+      }
+    },
+    {
+      "domain": "computer_skills",
+      "label": "مهارات الحاسوب · 30 سؤالًا جديدًا",
+      "total": 30,
+      "alone": {
+        "correct": 27,
+        "failed_requests": 0,
+        "median_seconds": 1.605,
+        "p95_seconds": 2.281,
+        "book_attribution_count": 0,
+        "web_attribution_count": 0,
+        "reference_book_attribution_count": 0,
+        "reference_page_metadata_count": 0
+      },
+      "rag": {
+        "correct": 28,
+        "failed_requests": 0,
+        "median_seconds": 10.132,
+        "p95_seconds": 14.021,
+        "book_attribution_count": 13,
+        "web_attribution_count": 10,
+        "reference_book_attribution_count": 13,
+        "reference_page_metadata_count": 9
+      }
+    },
+    {
+      "domain": "missing_information",
+      "label": "غياب المعلومة · الامتناع الصحيح",
+      "total": 20,
+      "alone": {
+        "correct": 20,
+        "failed_requests": 0,
+        "median_seconds": 0.634,
+        "p95_seconds": 0.834,
+        "book_attribution_count": 0,
+        "web_attribution_count": 0,
+        "reference_book_attribution_count": 0,
+        "reference_page_metadata_count": 0
+      },
+      "rag": {
+        "correct": 19,
+        "failed_requests": 0,
+        "median_seconds": 10.363,
+        "p95_seconds": 13.079,
+        "book_attribution_count": 0,
+        "web_attribution_count": 0,
+        "reference_book_attribution_count": 0,
+        "reference_page_metadata_count": 0
+      }
+    },
+    {
+      "domain": "computer_skills_source_bound",
+      "label": "30 صياغة مقيدة بالكتاب · مطابقة الجواب",
+      "total": 30,
+      "alone": {
+        "correct": 25,
+        "failed_requests": 0,
+        "median_seconds": 1.776,
+        "p95_seconds": 2.636,
+        "book_attribution_count": 0,
+        "web_attribution_count": 0,
+        "reference_book_attribution_count": 0,
+        "reference_page_metadata_count": 0
+      },
+      "rag": {
+        "correct": 22,
+        "failed_requests": 0,
+        "median_seconds": 10.699,
+        "p95_seconds": 16.186,
+        "book_attribution_count": 0,
+        "web_attribution_count": 0,
+        "reference_book_attribution_count": 0,
+        "reference_page_metadata_count": 0
+      }
+    }
+  ],
+  "answerable_aggregate": {
+    "alone": {
+      "correct": 95,
+      "total": 130
+    },
+    "rag": {
+      "correct": 115,
+      "total": 130
+    }
+  },
+  "notes": [
+    "مفتاح التصحيح لبنك الخوارزميات موجود في الملف المرفوع؛ ليس اختبارًا لمعارف محجوبة ولا تحكيمًا علميًا مستقلًا لدقة الكتاب. الأسئلة العربية الثلاثون أُعيدت صياغتها من صفحات مرجعية. لا تُنشر نصوص الكتب أو بنك الأسئلة الكامل.",
+    "المقياس للاختيار المتعدد هو مطابقة الخيار المرجعي. روجعت الإجابات الصريحة التي لم تكتب حرف الخيار؛ تقييم الامتناع ومطابقة المعنى أجراه المساعد، وليس لجنة بشرية مستقلة. تظهر الحالات وطرق التصحيح في ملف الدرجات المنقّح.",
+    "النموذج واحد، لكن المحفّزات وسياسة الإجابة والوصول إلى الويب تختلف بين المسارين؛ لا يجوز نسبة الفارق كله إلى RAG وحده. تنبيه جودة عند فهرسة بنك الخوارزميات حدّ من استخدامه، واستُخدمت مصادر ويب أو معرفة عامة في إجابات عديدة. ملف المهارات العربي فُهرس دون هذا التنبيه.",
+    "الجولة المقيدة بالكتاب تعيد صياغة الأسئلة العربية نفسها، فلا تُحسب 30 سؤالًا مستقلًا جديدًا. تفحص طلب الاعتماد على الملف، والنموذج المجرد لا يملك الكتاب. نجاح مطابقة الخيار لا يثبت التزام الجواب بالمصدر أو صحة الاستشهاد. الامتناع عن ادعاء قراءته سلوك صحيح، حتى عندما لا يحقق مطابقة الجواب.",
+    "الزمن يقاس مرة واحدة على الجهاز المحلي مع تعاقب ترتيب المسارين وجلسة محادثة جديدة لكل سؤال. المئين 95 بطريقة أقرب رتبة. ليست النتائج وعد أداء تحت الحمل، ولا قياسًا لأثر تعلم الطلاب.",
+    "وجود شارة كتاب أو رقم صفحة لا يثبت صحة الإسناد الدلالي. العدادات الخاصة بالكتاب والصفحة تطابق بيانات الإسناد فقط. احتُفظ بكل المحاولات محليًا؛ استُبعدت محاولتان لسؤال واحد بسبب خطأ استخراج الخيارات من PDF، وأعيد السؤال بعد تصحيحه للمسارين."
+  ],
+  "method": {
+    "same_model": true,
+    "temperature": 0.2,
+    "baseline_num_predict": 500,
+    "seed": 20260919,
+    "order": "alternating arms, sequential calls, fresh library session per prompt",
+    "scoring": "reference option match + documented assistant semantic exceptions; assistant-reviewed abstention",
+    "superseded_question": "ai091, both arms, repaired h(A) / option (A) parsing",
+    "raw_materials": "Retained locally; not published to protect account data and document copyright."
+  }
+}

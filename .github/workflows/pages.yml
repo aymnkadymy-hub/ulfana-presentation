@@ -22,8 +22,7 @@ jobs:
         run: python3 scripts/build_site.py
       - name: Validate public package
         run: |
-          node --check showcase.js
-          node --check evidence.js
+          node --check slides.js
           python3 scripts/check_public.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

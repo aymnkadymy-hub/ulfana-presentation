@@ -1,0 +1,70 @@
+{
+  "fusion_ablation.json": {
+    "source": "fusion_ablation.json",
+    "sha256": "58266bb8b482740f8c8f9efa355c048a7bf3232ac08c4dc3594c49733cc91390",
+    "sample": 67,
+    "metric": "Reference book AND page at rank 1",
+    "arms": {
+      "full": {
+        "at1": 41,
+        "retrieved_reference": 54,
+        "total": 67
+      },
+      "fused": {
+        "at1": 26,
+        "retrieved_reference": 59,
+        "total": 67
+      }
+    },
+    "scope": "Historical same-question retrieval ablation: RRF fusion without reranker vs full pipeline. Rank-1 improves; any-rank coverage does not. Not answer accuracy; not a current-system claim."
+  },
+  "eval_set.results.json": {
+    "source": "eval_set.results.json",
+    "sha256": "16398f83e0f245338dc3ad46b550d49f928b55fd1e424e1c9afed8f84cb51888",
+    "sample": 67,
+    "at1": 44,
+    "found": 61,
+    "scope": "Historical reference-page retrieval, not answer accuracy."
+  },
+  "eval_set.ar-clean.results.json": {
+    "source": "eval_set.ar-clean.results.json",
+    "sha256": "ad6b75af53f2115d121b7c84fd6688f0b9dfba4bf245c8303a4ccc69f9b7228f",
+    "sample": 40,
+    "at1": 26,
+    "found": 35,
+    "scope": "Historical reference-page retrieval, not answer accuracy."
+  },
+  "model_bakeoff_frozen.json": {
+    "source": "model_bakeoff_frozen.json",
+    "sha256": "72c1ea608aeb622dd1a446c06630cffd6b874c22d4074cdd6a6ae0a537e7cc9a",
+    "date": "2026-09-17",
+    "questions": 49,
+    "models": {
+      "qwen2.5:7b": {
+        "hit": 45,
+        "of": 49
+      },
+      "Fanar-1-9B-Instruct-GGUF:Q4_K_M": {
+        "hit": 45,
+        "of": 49
+      },
+      "ALLaM-AI_ALLaM-7B-Instruct-preview": {
+        "hit": 44,
+        "of": 49
+      },
+      "command-r7b-arabic:7b": {
+        "hit": 43,
+        "of": 49
+      },
+      "qwen2.5:3b": {
+        "hit": 42,
+        "of": 49
+      },
+      "gemma3:4b": {
+        "hit": 40,
+        "of": 49
+      }
+    },
+    "scope": "Literal reference-string match with frozen web evidence; not semantic correctness or model-alone versus library comparison."
+  }
+}

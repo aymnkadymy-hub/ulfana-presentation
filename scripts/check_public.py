@@ -227,6 +227,43 @@ def reconcile_grades() -> None:
         fail(ep,f'cannot reconcile public grades: {type(exc).__name__}')
 
 
+
+def reconcile_expanded() -> None:
+    ep, gp = SITE/'data'/'expanded-benchmark.json', SITE/'data'/'expanded-grades.json'
+    try:
+        d, grades = json.loads(ep.read_text()), json.loads(gp.read_text())['grades']
+        sample = d['sample']
+        if d['status'] != 'complete' or len(grades) != sample['accepted_responses']:
+            fail(ep, 'expanded benchmark incomplete')
+        keys = {(g['id'], g['arm']) for g in grades}
+        if len(keys) != len(grades) or len(grades) != 2 * sample['paired_prompts']:
+            fail(gp, 'duplicate or missing response grades')
+        if sample['paired_prompts'] != sample['base_unique_questions'] + sample['source_bound_rephrasings']:
+            fail(ep, 'source rephrasings must be counted separately')
+        if sample['base_unique_questions'] != sample['answerable_mcq'] + sample['unanswerable']:
+            fail(ep, 'base question denominators inconsistent')
+        if sample['total_attempts'] != sample['accepted_responses'] + sample['excluded_parser_attempts']:
+            fail(ep, 'attempt accounting inconsistent')
+        for group in d['groups']:
+            for arm in ['alone', 'rag']:
+                rows = [g for g in grades if g['domain'] == group['domain'] and g['arm'] == arm]
+                if len(rows) != group['total'] or not all(isinstance(g['correct'], bool) for g in rows):
+                    fail(gp, 'incomplete group grades')
+                if sum(g['correct'] is True for g in rows) != group[arm]['correct']:
+                    fail(ep, 'expanded summary disagrees with individual grades')
+                if sum(bool(g['error']) for g in rows) != group[arm]['failed_requests']:
+                    fail(ep, 'failed response accounting inconsistent')
+        for arm in ['alone','rag']:
+            rows = [g for g in grades if g['domain'] in ['ai_search','computer_skills'] and g['arm'] == arm]
+            if d['answerable_aggregate'][arm] != {'correct':sum(g['correct'] for g in rows),'total':len(rows)}:
+                fail(ep, 'answerable aggregate disagrees with grades')
+        historical=json.loads((SITE/'data'/'historical-benchmarks.json').read_text())['fusion_ablation.json']
+        if historical['arms']['full']['at1'] != 41 or historical['arms']['fused']['at1'] != 26 or historical['sample'] != 67:
+            fail(ep, 'slide 5 disagrees with historical evidence')
+    except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        fail(ep, f'cannot reconcile expanded benchmark: {type(exc).__name__}')
+
+
 def main() -> int:
     if not SITE.is_dir():
         print(json.dumps({'status':'not_built','package':str(SITE),'message':'Run once _site exists.'},ensure_ascii=False,indent=2))
@@ -287,6 +324,7 @@ def main() -> int:
         ERRORS.append('data/evaluation.json: missing completed public evaluation')
     else:
         reconcile_grades()
+    reconcile_expanded()
     unique_records = list({json.dumps(x,sort_keys=True):x for x in RECORDS}.values())
     print(json.dumps({'status':'passed' if not ERRORS else 'blocked','files_checked':count,'references_checked':len(unique_records),'errors':sorted(set(ERRORS)),'warnings':sorted(set(WARNINGS)),'documents':[x for x in unique_records if x['kind']=='document'],'local_server_links':[x for x in unique_records if x['kind']=='local_server_link'],'anchors_recorded':sum(x['kind']=='anchor' for x in unique_records),'limitations':['Static checks cannot inspect private information embedded in images or PDFs.','Computed JS asset URLs and interactive states require browser QA.']},ensure_ascii=False,indent=2))
     return 1 if ERRORS else 0
