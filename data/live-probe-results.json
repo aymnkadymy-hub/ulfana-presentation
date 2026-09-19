@@ -1,0 +1,109 @@
+{
+  "status": "complete",
+  "date": "2026-09-19",
+  "sample": {
+    "paired_questions": 8,
+    "answerable": 6,
+    "unanswerable": 2,
+    "reference_documents": 1,
+    "reference_pages": 3,
+    "question_language": "Arabic",
+    "document_language": "English"
+  },
+  "method": "فحص مستقل لمسار /chat/stream الحي بحساب اختبار معزول وPDF أصلي اصطناعي؛ النموذج نفسه، لكن محفزات وسياسات التطبيق تختلف بطبيعتها عن الطلب المباشر. لا تخلط أرقامه مع التجربة المضبوطة.",
+  "arms": {
+    "alone": {
+      "correct": 0,
+      "total": 6,
+      "grounded_citations": 0,
+      "citation_total": 6,
+      "abstained_correctly": 2,
+      "abstention_total": 2,
+      "median_seconds": 1.92
+    },
+    "rag": {
+      "correct": 5,
+      "total": 6,
+      "grounded_citations": 3,
+      "citation_total": 6,
+      "abstained_correctly": 1,
+      "abstention_total": 2,
+      "median_seconds": 4.33
+    }
+  },
+  "limitations": [
+    "اختبار صغير جدًا لتفاصيل اصطناعية لا يفترض أن يعرفها النموذج من تدريبه؛ يختبر الوصول إلى المرجع أكثر من المعرفة العامة.",
+    "ستة أسئلة لها جواب وسؤالان بلا جواب؛ تشغيل واحد دون تقدير إحصائي لجودة المنتج.",
+    "لم تُعطَ الطبقة المجردة الوثيقة؛ لم يُجرَ ضبط للنموذج أو سياسات الإنتاج.",
+    "الوثيقة بالإنجليزية والأسئلة بالعربية؛ الفحص يتضمن استرجاعًا عبر اللغات."
+  ],
+  "source_attribution_errors": 2,
+  "irrelevant_web_fallbacks": 1,
+  "model": "gemma3:4b",
+  "grades": [
+    {
+      "id": "e01",
+      "answerable": true,
+      "alone_correct": false,
+      "rag_correct": true,
+      "rag_grounded": false,
+      "note": "المعلومة المطلوبة صحيحة لكن النظام وسمها معرفة عامة رغم مصدرها الاصطناعي الخاص."
+    },
+    {
+      "id": "e02",
+      "answerable": true,
+      "alone_correct": false,
+      "rag_correct": false,
+      "rag_grounded": false,
+      "note": "أخطأ مدة الجلسة وعدد المشاركين، ولم يقدم إسنادًا."
+    },
+    {
+      "id": "e03",
+      "answerable": true,
+      "alone_correct": false,
+      "rag_correct": true,
+      "rag_grounded": true,
+      "note": "المهمة وموعدها صحيحان مع الكتاب والصفحة في البيانات الوصفية."
+    },
+    {
+      "id": "e04",
+      "answerable": true,
+      "alone_correct": false,
+      "rag_correct": true,
+      "rag_grounded": false,
+      "note": "النسب صحيحة لكن الإسناد إلى معرفة عامة غير صحيح."
+    },
+    {
+      "id": "e05",
+      "answerable": true,
+      "alone_correct": false,
+      "rag_correct": true,
+      "rag_grounded": true,
+      "note": "الشرط وعدد الأسئلة صحيحان ومسنَدان."
+    },
+    {
+      "id": "e06",
+      "answerable": true,
+      "alone_correct": false,
+      "rag_correct": true,
+      "rag_grounded": true,
+      "note": "المدتان صحيحتان ومسنَدتان."
+    },
+    {
+      "id": "e07",
+      "answerable": false,
+      "alone_correct": true,
+      "rag_correct": false,
+      "rag_grounded": false,
+      "note": "طلب معلومة غائبة فأعاد هاتف شركة غير ذات صلة من الويب؛ حُذف الرقم من المخرجات العامة."
+    },
+    {
+      "id": "e08",
+      "answerable": false,
+      "alone_correct": true,
+      "rag_correct": true,
+      "rag_grounded": false,
+      "note": "امتنع الطرفان عن جدول نقل غير موجود."
+    }
+  ]
+}

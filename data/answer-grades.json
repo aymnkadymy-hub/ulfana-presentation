@@ -1,0 +1,318 @@
+{
+  "judge": "AI assistant semantic review; no independent human panel",
+  "strict_rule": "All frozen required facts must be correct; partial answers are separate. The metric does not certify every extra sentence.",
+  "grades": [
+    {
+      "id": "c01",
+      "category": "general_course",
+      "answerable": true,
+      "note": "ميّز الطرفان وظائف الوحدتين؛ جواب المكتبة بلا استشهاد صريح.",
+      "alone": {
+        "required_facts_met": 2,
+        "required_facts_total": 2,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      },
+      "rag": {
+        "required_facts_met": 2,
+        "required_facts_total": 2,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c02",
+      "category": "general_course",
+      "answerable": true,
+      "note": "استوفى الطرفان العلاقة المطلوبة ووحدة القياس. توجد عبارات زائدة مربكة، دون تغيير النتيجتين المطلوبتين.",
+      "alone": {
+        "required_facts_met": 2,
+        "required_facts_total": 2,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      },
+      "rag": {
+        "required_facts_met": 2,
+        "required_facts_total": 2,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": true,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c03",
+      "category": "general_course",
+      "answerable": true,
+      "note": "أجاب الطرفان عن بعض الخطوات؛ أغفل جواب المكتبة مستوى من القائمة، ولم يستوفِ التسلسل المجمد كاملًا.",
+      "alone": {
+        "required_facts_met": 1,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": true,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      },
+      "rag": {
+        "required_facts_met": 1,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": true,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c04",
+      "category": "general_course",
+      "answerable": true,
+      "note": "أخطأ النموذج المجرد في وظيفة العد؛ استوفى جواب المكتبة الوظائف الأربع مع استشهاد مساند.",
+      "alone": {
+        "required_facts_met": 3,
+        "required_facts_total": 4,
+        "complete_correct": false,
+        "partial": true,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      },
+      "rag": {
+        "required_facts_met": 4,
+        "required_facts_total": 4,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": true,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c05",
+      "category": "general_course",
+      "answerable": true,
+      "note": "المجرد أضاف فترة زمنية أقدم من المرجع؛ جواب المكتبة أخطأ الفترة وخلط بعض خصائص نوع آخر من الحواسيب. كلاهما جزئي.",
+      "alone": {
+        "required_facts_met": 1,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": true,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      },
+      "rag": {
+        "required_facts_met": 1,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": true,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c06",
+      "category": "general_course",
+      "answerable": true,
+      "note": "المجرد أخطأ الاختصارين؛ حالة المكتبة أصابت أحدهما ولم تسترجع دليلًا.",
+      "alone": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      },
+      "rag": {
+        "required_facts_met": 1,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": true,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c07",
+      "category": "general_course",
+      "answerable": true,
+      "note": "المجرد استخدم تقسيمًا مختلفًا عن المطلوب؛ جواب المكتبة طابق التقسيم المرجعي وأمثلته.",
+      "alone": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      },
+      "rag": {
+        "required_facts_met": 2,
+        "required_facts_total": 2,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": true,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c08",
+      "category": "general_course",
+      "answerable": true,
+      "note": "المجرد امتنع؛ جواب المكتبة خالف تصنيف المصدر على الرغم من استشهاده به.",
+      "alone": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": true
+      },
+      "rag": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c09",
+      "category": "source_specific",
+      "answerable": true,
+      "note": "المجرد لم يعرف القيم الخاصة بالوثيقة؛ جواب المكتبة استوفى القيمتين مع مصدر صحيح.",
+      "alone": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": true
+      },
+      "rag": {
+        "required_facts_met": 2,
+        "required_facts_total": 2,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": true,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c10",
+      "category": "source_specific",
+      "answerable": true,
+      "note": "امتنع الطرفان عن معلومة موجودة في المرجع؛ لم يسترجع النظام مقطعًا.",
+      "alone": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": true
+      },
+      "rag": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": true
+      }
+    },
+    {
+      "id": "c11",
+      "category": "source_specific",
+      "answerable": true,
+      "note": "جواب المكتبة استوفى القيمتين المطلوبتين، لكنه أضاف استشهادًا بصفحة لا تسند ادعاءه، لذلك لا يعد جوابًا موثقًا بالكامل.",
+      "alone": {
+        "required_facts_met": 0,
+        "required_facts_total": 2,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": true
+      },
+      "rag": {
+        "required_facts_met": 2,
+        "required_facts_total": 2,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "c12",
+      "category": "source_specific",
+      "answerable": true,
+      "note": "المجرد امتنع؛ جواب المكتبة استوفى العدد والمؤشرات الثلاثة مع مصدر مساند.",
+      "alone": {
+        "required_facts_met": 0,
+        "required_facts_total": 4,
+        "complete_correct": false,
+        "partial": false,
+        "grounded_complete_answer": false,
+        "incorrect_abstention": true
+      },
+      "rag": {
+        "required_facts_met": 4,
+        "required_facts_total": 4,
+        "complete_correct": true,
+        "partial": false,
+        "grounded_complete_answer": true,
+        "incorrect_abstention": false
+      }
+    },
+    {
+      "id": "u01",
+      "category": "unanswerable_synthetic_identifier",
+      "answerable": false,
+      "note": "امتنع الطرفان عن اختلاق المعلومة الاصطناعية الغائبة.",
+      "alone": {
+        "correct_abstention": true
+      },
+      "rag": {
+        "correct_abstention": true
+      }
+    },
+    {
+      "id": "u02",
+      "category": "unanswerable_synthetic_identifier",
+      "answerable": false,
+      "note": "امتنع الطرفان عن اختلاق المعلومة الاصطناعية الغائبة.",
+      "alone": {
+        "correct_abstention": true
+      },
+      "rag": {
+        "correct_abstention": true
+      }
+    },
+    {
+      "id": "u03",
+      "category": "unanswerable_synthetic_identifier",
+      "answerable": false,
+      "note": "امتنع الطرفان عن اختلاق المعلومة الاصطناعية الغائبة.",
+      "alone": {
+        "correct_abstention": true
+      },
+      "rag": {
+        "correct_abstention": true
+      }
+    },
+    {
+      "id": "u04",
+      "category": "unanswerable_synthetic_identifier",
+      "answerable": false,
+      "note": "امتنع الطرفان عن اختلاق المعلومة الاصطناعية الغائبة.",
+      "alone": {
+        "correct_abstention": true
+      },
+      "rag": {
+        "correct_abstention": true
+      }
+    }
+  ]
+}

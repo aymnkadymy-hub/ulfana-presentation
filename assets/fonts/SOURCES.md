@@ -1,0 +1,1 @@
+Fonts: IBM Plex Sans Arabic, Noto Kufi Arabic, Amiri. Retrieved from Google Fonts on 2026-09-19. Each family is distributed under the SIL Open Font License. Source repositories: https://github.com/IBM/plex ; https://github.com/notofonts/arabic ; https://github.com/aliftype/amiri .

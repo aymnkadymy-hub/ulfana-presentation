@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "language": "ar",
+  "prepared_on": "2026-09-19",
+  "title": "مؤشرات أولفانا",
+  "rules": {
+    "missing_value_label": "بانتظار خط أساس",
+    "proposed_label": "مؤشر مقترح",
+    "measured_label": "قياس فعلي",
+    "historical_label": "قياس تاريخي",
+    "exclude_demo_accounts_from_product_kpis": true,
+    "do_not_treat_missing_as_zero": true,
+    "do_not_present_capability_counts_as_learning_impact": true,
+    "baseline_needed_before_setting_targets": true
+  },
+  "measured_current_audit": [
+    {"id":"ui_routes_reviewed","label":"مسارات تمّت مراجعتها","value":6,"unit":"مسار","scope":"جولة متصفح حساب العرض فقط","routes":["home","library","tools","tool/passport","tool/pomodoro","clubs"],"source":"inspect_platform.py"},
+    {"id":"unhandled_javascript_errors","label":"استثناءات JavaScript في الجولة","value":0,"unit":"استثناء","scope":"المسارات الستة في جولة واحدة؛ لا يمثل معدل أعطال الإنتاج","source":"inspect_platform.py"},
+    {"id":"companion_options","label":"شخصيات الرفيق المتاحة","value":5,"unit":"شخصية","scope":"جرد وظائف","source":"webapp/js/companion.js:276-357"},
+    {"id":"student_tool_tiles","label":"مداخل أدوات الطالب","value":12,"unit":"مدخل","scope":"يشمل المكتبة والأندية؛ جرد وظائف لا 12 نظامًا مستقلاً","source":"webapp/js/app.js:3004-3019"},
+    {"id":"library_tabs","label":"تبويبات المكتبة","value":7,"unit":"تبويب","scope":"جرد وظائف","source":"webapp/js/app.js:725-739"}
+  ],
+  "historical_measurements": [
+    {
+      "id":"gemma_frozen_keyword_hit_20260917",
+      "label":"مطابقة مرجع لفظي مع أدلة مجمّدة",
+      "status":"historical",
+      "model":"gemma3:4b",
+      "date":"2026-09-17",
+      "value":81.63,
+      "numerator":40,
+      "denominator":49,
+      "unit":"%",
+      "source":"benchmark/model_bakeoff_frozen.json",
+      "method_source":"benchmark/model_bakeoff_frozen.py:81",
+      "definition":"وجود واحد من النصوص المرجعية حرفيًا في الإجابة: any(g in answer).",
+      "limitations":["مطابقة لفظية لا حكم دلالي على صحة الجواب","كل النماذج رأت أدلة ويب مجمّدة","ليست مقارنة Gemma المجرد مع المكتبة","لا تُقارن مباشرة بنتائج التقييم الجديد"],
+      "recommended_for_main_presentation":false
+    }
+  ],
+  "proposed_kpis": [
+    {
+      "id":"weekly_learning_cycles","module":"platform","label":"دورات تعلّم مكتملة أسبوعيًا","status":"proposed","value":null,"unit":"طالب/أسبوع",
+      "definition":"عدد الطلاب الحقيقيين الفريدين الذين قرؤوا جوابًا مرتبطًا بمادة ثم أكملوا مراجعة أو اختبارًا على المادة نفسها خلال 7 أيام.",
+      "numerator":"الطلاب المستوفون لشرطي الفهم والمراجعة","denominator":null,
+      "window":"7 أيام متحركة","direction":"higher",
+      "events_needed":["library_answer_viewed","quiz_completed","review_completed"],
+      "availability":"الأفعال موجودة، لكن ربطها بمادة وهوية حدث موحد يحتاج تجميعًا إضافيًا.",
+      "caveat":"مؤشر استخدام ذي معنى؛ لا يثبت تحسن التحصيل سببيًا."
+    },
+    {
+      "id":"answer_correctness","module":"library","label":"صحة الإجابة","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة الأسئلة القابلة للإجابة التي استوفت إجاباتها الحقائق المطلوبة وفق مرجع ثابت وتحكيم دلالي.",
+      "numerator":"إجابات صحيحة وفق سلم معلن","denominator":"أسئلة قابلة للإجابة في العينة",
+      "window":"كل إصدار على عينة ثابتة","direction":"higher",
+      "events_needed":["evaluation_question","required_facts","answer","semantic_grade"],
+      "availability":"المقارنة الجديدة توفر قياسًا أوليًا؛ يجب ذكر حجم العينة واختيارها.",
+      "caveat":"حضور كلمات المرجع أو وجود استشهاد لا يثبت صحة الإجابة."
+    },
+    {
+      "id":"retrieval_recall_at_5","module":"rag","label":"العثور على الدليل ضمن أول 5 نتائج","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة الأسئلة التي يظهر مقطعها أو صفحتها المرجعية ضمن أول خمس نتائج مسترجعة.",
+      "numerator":"أسئلة ظهر دليلها الصحيح ضمن أول 5 نتائج","denominator":"الأسئلة ذات دليل ذهبي موجود في مجموعة الكتب المجمدة",
+      "window":"كل إصدار","direction":"higher",
+      "events_needed":["retrieved_chunk_ids","gold_book_id","gold_page"],
+      "availability":"توجد أدوات benchmark/eval_retrieval.py؛ يلزم تجميد الكتب وإثبات قابلية قراءة صفحات العينة.",
+      "caveat":"يفصل حسب العربية والإنجليزية وجودة OCR؛ لا يعاد استعمال مجموعات التقييم المتقاعدة."
+    },
+    {
+      "id":"citation_support_precision","module":"rag","label":"دقة إسناد الجواب إلى المصدر","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة الادعاءات القابلة للتحقق والمرفقة بمصدر، التي يدعمها فعلًا المقطع المشار إليه.",
+      "numerator":"ادعاءات مسندة يدعمها مصدرها","denominator":"الادعاءات المسندة التي تم تحكيمها",
+      "window":"كل إصدار وعينة أسبوعية","direction":"higher",
+      "events_needed":["claim","citation","source_passage","support_grade"],
+      "availability":"الاستشهاد الخادمي موجود؛ التحقق الدلالي يحتاج تحكيمًا مستقلًا.",
+      "caveat":"وجود اسم الكتاب ورقم الصفحة وحده ليس دقة إسناد."
+    },
+    {
+      "id":"abstention_recall","module":"library","label":"الامتناع الصحيح عند غياب الدليل","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة الأسئلة التي لا يتيح المصدر جوابها ويعترف فيها النظام بعدم كفاية الدليل.",
+      "numerator":"أسئلة غير قابلة للإجابة امتنع النظام عنها","denominator":"كل الأسئلة غير القابلة للإجابة في العينة",
+      "window":"كل إصدار","direction":"higher",
+      "events_needed":["should_abstain","answer","abstained"],
+      "availability":"سياسة الامتناع موجودة؛ يقاس السلوك مع الإجابة النهائية.",
+      "caveat":"يعرض مع معدل الامتناع الخاطئ عن الأسئلة القابلة للإجابة."
+    },
+    {
+      "id":"false_abstention","module":"library","label":"الامتناع عن سؤال له جواب","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة الأسئلة القابلة للإجابة التي امتنع النظام عنها.",
+      "numerator":"أسئلة قابلة للإجابة رُفضت","denominator":"الأسئلة القابلة للإجابة",
+      "window":"كل إصدار","direction":"lower",
+      "events_needed":["should_abstain","answer","abstained"],
+      "availability":"يتشارك عينة اختبار الامتناع.",
+      "caveat":"يحمي من تحسين الامتناع بجعل النظام يرفض كل الأسئلة."
+    },
+    {
+      "id":"answer_latency","module":"library","label":"زمن الإجابة P50 / P95","status":"proposed","value":null,"unit":"ثانية",
+      "definition":"المدة من إرسال السؤال إلى اكتمال الجواب، مع فصل الزمن حتى أول كلمة.",
+      "numerator":null,"denominator":"الطلبات الناجحة في فترة القياس",
+      "window":"24 ساعة / كل تجربة","direction":"lower",
+      "events_needed":["request_start","first_token","answer_complete","model","device","cache_hit"],
+      "availability":"توجد مقاييس HTTP تشغيلية، لكن زمن تدفق الجواب يحتاج تعريفًا خاصًا.",
+      "caveat":"يفصل البارد والدافئ والتخبئة؛ العينة الصغيرة لا تكفي لتقدير P95 مستقر."
+    },
+    {
+      "id":"voice_word_error_rate","module":"voice","label":"خطأ التفريغ الصوتي العربي","status":"proposed","value":null,"unit":"%",
+      "definition":"مجموع استبدال الكلمات وحذفها وإضافتها مقسومًا على عدد كلمات التفريغ المرجعي بعد تطبيع معلن.",
+      "numerator":"S + D + I","denominator":"كلمات المرجع",
+      "window":"كل إصدار صوتي","direction":"lower",
+      "events_needed":["consented_test_clip","reference_transcript","predicted_transcript","dialect","noise_condition"],
+      "availability":"مسار التفريغ موجود؛ لم تُقَس عينة صوتية في جولة المتصفح.",
+      "caveat":"تفصل الفصحى واللهجة العراقية والضجيج؛ لا تُنشر أصوات الطلاب."
+    },
+    {
+      "id":"time_to_first_audio","module":"voice","label":"الزمن حتى أول صوت","status":"proposed","value":null,"unit":"ثانية",
+      "definition":"المدة من اكتمال سؤال المستخدم الصوتي إلى بدء سماع جواب قابل للفهم.",
+      "numerator":null,"denominator":"الجلسات الصوتية الناجحة",
+      "window":"كل إصدار وعينة تشغيلية","direction":"lower",
+      "events_needed":["speech_end","first_audio_played","playback_error"],
+      "availability":"تحتاج علامات زمنية حول التفريغ والتوليد وتشغيل الصوت.",
+      "caveat":"لا يساوي زمن طلب TTS وحده؛ يتأثر بالجهاز والشبكة."
+    },
+    {
+      "id":"scheduled_review_completion","module":"study","label":"إكمال المراجعات المستحقة","status":"proposed","value":null,"unit":"%",
+      "definition":"البطاقات المستحقة عند بداية اليوم التي راجعها الطالب قبل نهاية اليوم.",
+      "numerator":"المراجعات المستحقة المكتملة","denominator":"المراجعات المستحقة عند بداية اليوم",
+      "window":"يومي / أسبوعي","direction":"higher",
+      "events_needed":["review_due_snapshot","flashcard_review_completed"],
+      "availability":"SM-2 ومسار مراجعة البطاقات موجودان في backend/api/flashcards.py؛ يلزم سجل تاريخي للمقام.",
+      "caveat":"درجة المراجعة يقدّرها الطالب؛ الإكمال لا يساوي إتقانًا مقاسًا."
+    },
+    {
+      "id":"task_completion_on_time","module":"study","label":"إنجاز المهام في موعدها","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة المهام ذات الموعد المحدد التي أُنجزت قبل موعدها أو فيه.",
+      "numerator":"مهام أُنجزت في موعدها","denominator":"مهام مستحقة خلال الفترة",
+      "window":"أسبوعي","direction":"higher",
+      "events_needed":["task_created","task_due_at","task_completed_at","task_due_changed"],
+      "availability":"المهام والمواعيد موجودة؛ يحتاج القياس تاريخ إكمال وتاريخ تغيير الموعد.",
+      "caveat":"استبعاد المهام دون موعد، مع عرض حجم العينة."
+    },
+    {
+      "id":"community_helpful_answer_24h","module":"community","label":"أسئلة نالت إجابة مفيدة خلال 24 ساعة","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة أسئلة الطلاب الحقيقية التي حصلت على رد من شخص آخر خلال 24 ساعة وأقر صاحب السؤال بفائدته.",
+      "numerator":"أسئلة حصلت على رد مفيد ضمن 24 ساعة","denominator":"الأسئلة المؤهلة المنشورة قبل 24 ساعة على الأقل",
+      "window":"أسبوعي","direction":"higher",
+      "events_needed":["question_created","reply_created","reply_marked_helpful"],
+      "availability":"الأسئلة والردود موجودة؛ إشارة «رد مفيد» تحتاج واجهة وتجميعًا.",
+      "caveat":"يستبعد المؤلف نفسه وحسابات العرض، ولا يساوي الإعجاب فائدة تعليمية."
+    },
+    {
+      "id":"passport_self_reported_readiness","module":"passport","label":"الكفاءات المسجّلة كمتقنة","status":"proposed","value":null,"unit":"%",
+      "definition":"متطلبات المرحلة التالية التي علّمها الطالب متقنة، مقسومة على جميع متطلبات تلك المرحلة.",
+      "numerator":"متطلبات معلّمة كمتقنة","denominator":"متطلبات المرحلة التالية",
+      "window":"على مستوى الطالب / لقطة مؤرخة","direction":"higher",
+      "events_needed":["prerequisite_set_version","competency_self_report"],
+      "availability":"محسوب فعليًا لكل مستخدم داخل passportPage؛ لم تُجمع نسب طلاب حقيقيين.",
+      "caveat":"تقييم ذاتي لا شهادة أو إثبات إتقان؛ لا يقارن الطلاب إن اختلفت متطلباتهم."
+    },
+    {
+      "id":"companion_opt_in","module":"companion","label":"اختيار الرفيق طوعًا","status":"proposed","value":null,"unit":"%",
+      "definition":"نسبة المستخدمين النشطين الذين فعّلوا الرفيق باختيارهم.",
+      "numerator":"مستخدمون نشطون فعّلوا الرفيق بأنفسهم","denominator":"مستخدمون نشطون مؤهلون عُرض عليهم الخيار",
+      "window":"أسبوعي","direction":"neutral",
+      "events_needed":["companion_option_seen","companion_enabled","companion_disabled","change_origin"],
+      "availability":"التفضيل محفوظ محليًا؛ لا يوجد قياس تبنٍّ مجمّع في هذه الجولة.",
+      "caveat":"الرفيق مفعّل تلقائيًا في حساب العرض؛ لا يعد ذلك اختيارًا طوعيًا."
+    },
+    {
+      "id":"companion_task_completion","module":"companion","label":"إكمال المهمة مع الرفيق","status":"proposed","value":null,"unit":"% لكل مجموعة",
+      "definition":"إكمال مهمة دراسة محددة في تجربة اختيارية تقارن ظهور الرفيق وغيابه.",
+      "numerator":"مشاركون أتموا المهمة","denominator":"مشاركون بدأوا المهمة في المجموعة",
+      "window":"تجربة محددة مسبقًا","direction":"higher",
+      "events_needed":["study_assignment","task_started","task_completed","distraction_rating"],
+      "availability":"دراسة مستقبلية؛ لم تُنفّذ.",
+      "caveat":"لا يُدّعى رفع التركيز أو التحصيل من شكل الشخصية أو نسبة اختيارها."
+    }
+  ],
+  "companions": [
+    {"id":"aram","name":"أرومة","caption":"نبتت بين صفحتين… وما زالت تقرأ.","asset":"companions/aram.svg"},
+    {"id":"thaloobi","name":"ذيبو","caption":"تعال نفهم سوا.","asset":"companions/thaloobi.svg"},
+    {"id":"mijo","name":"ميجو","caption":"فكرة جديدة، وورقة أخرى.","asset":"companions/mijo.svg"},
+    {"id":"addoun","name":"أدّون","caption":"تسمع أولًا… ثم تدوّن.","asset":"companions/addoun.svg"},
+    {"id":"ozis","name":"أوزيس","caption":"محارته تغنّي، وفضوله يقود الطريق.","asset":"companions/ozis.svg"}
+  ],
+  "screenshots": [
+    {"file":"screenshots/library.png","caption":"المكتبة الناطقة — الواجهة الفعلية في حساب العرض","contains_real_user_data":false},
+    {"file":"screenshots/tools.png","caption":"أدوات الطالب — الواجهة الفعلية","contains_real_user_data":false},
+    {"file":"screenshots/tool-passport.png","caption":"جواز حساب العرض — نسبة ذاتية توضيحية وليست بيانات طالب حقيقي","contains_real_user_data":false},
+    {"file":"screenshots/tool-pomodoro.png","caption":"مؤقّت التركيز في حساب العرض","contains_real_user_data":false}
+  ]
+}

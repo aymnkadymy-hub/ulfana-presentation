@@ -1,0 +1,81 @@
+[
+  {
+    "id": "e01",
+    "question": "بحسب كتاب Nawar Learning Protocol، في أي يوم من الأسبوع وفي أي ساعة يعقد اللقاء الدراسي الأسبوعي؟",
+    "gold_page": 1,
+    "required_facts": [
+      "الأربعاء",
+      "19:20"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "e02",
+    "question": "بحسب كتاب Nawar Learning Protocol، كم تستغرق الجلسة الدراسية وكم عدد المشاركين في المجموعة؟",
+    "gold_page": 1,
+    "required_facts": [
+      "42 دقيقة",
+      "24 مشاركًا"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "e03",
+    "question": "بحسب كتاب Nawar Learning Protocol، كم نقطة تساوي مهمة Cedar Note وما موعد تسليمها؟",
+    "gold_page": 2,
+    "required_facts": [
+      "18 نقطة",
+      "اليوم السادس الساعة 20:10"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "e04",
+    "question": "بحسب كتاب Nawar Learning Protocol، ما النسب الثلاثة لعناصر تقييم الشرح والأدلة والتأمل؟",
+    "gold_page": 2,
+    "required_facts": [
+      "الشرح 45%",
+      "الأدلة 35%",
+      "التأمل 20%"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "e05",
+    "question": "بحسب كتاب Nawar Learning Protocol، متى تلزم إعادة التدريب وكم سؤالًا تتضمن الإعادة؟",
+    "gold_page": 2,
+    "required_facts": [
+      "أقل من 62 من 100",
+      "سبعة أسئلة"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "e06",
+    "question": "بحسب كتاب Nawar Learning Protocol، ما مدة القراءة الصامتة ومدة شرح الزميل في روتين Miro؟",
+    "gold_page": 3,
+    "required_facts": [
+      "12 دقيقة قراءة",
+      "8 دقائق شرح"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "e07",
+    "question": "بحسب كتاب Nawar Learning Protocol، ما رقم هاتف منسق المجموعة؟",
+    "gold_page": null,
+    "required_facts": [
+      "لا تتوفر معلومة عن رقم الهاتف؛ يجب عدم الاختلاق"
+    ],
+    "answerable": false
+  },
+  {
+    "id": "e08",
+    "question": "بحسب كتاب Nawar Learning Protocol، متى تنطلق حافلة الطلاب؟",
+    "gold_page": null,
+    "required_facts": [
+      "لا يتوفر جدول للنقل؛ يجب عدم الاختلاق"
+    ],
+    "answerable": false
+  }
+]
