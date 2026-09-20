@@ -11,6 +11,9 @@ for name in ['fonts','companions']:
  dst=out/'assets'/name;dst.mkdir(parents=True,exist_ok=True)
  for p in (root/'assets'/name).iterdir():
   if p.is_file() and p.suffix in {'.woff2','.css','.md','.txt','.svg','.png','.webp'}:shutil.copy2(p,dst/p.name)
+(out/'assets'/'screens').mkdir()
+for name in ['feed.png','library.png','SOURCES.md']:
+ shutil.copy2(root/'assets'/'screens'/name,out/'assets'/'screens'/name)
 for name in ['logo.png','logo.svg','social-card.svg']:
  p=root/'assets'/name
  if p.exists():shutil.copy2(p,out/'assets'/name)

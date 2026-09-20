@@ -259,7 +259,7 @@ def reconcile_expanded() -> None:
                 fail(ep, 'answerable aggregate disagrees with grades')
         historical=json.loads((SITE/'data'/'historical-benchmarks.json').read_text())['fusion_ablation.json']
         if historical['arms']['full']['at1'] != 41 or historical['arms']['fused']['at1'] != 26 or historical['sample'] != 67:
-            fail(ep, 'slide 5 disagrees with historical evidence')
+            fail(ep, 'retrieval slide disagrees with historical evidence')
     except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
         fail(ep, f'cannot reconcile expanded benchmark: {type(exc).__name__}')
 
@@ -296,6 +296,35 @@ def reconcile_semantic() -> None:
         assert d['method'] and d['limitations']
     except (OSError,KeyError,TypeError,AssertionError,json.JSONDecodeError) as exc:
         fail(owner,f'semantic review reconciliation failed: {type(exc).__name__}')
+
+
+
+def reconcile_story() -> None:
+    owner=SITE/'data'/'story-copy.json'
+    class StoryText(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=True)
+            self.blocks={};self.active=None;self.parts=[];self.sections=[]
+        def handle_starttag(self,tag,attrs):
+            a=dict(attrs)
+            if tag=='section' and 'slide' in a.get('class','').split():self.sections.append(a['id'])
+            if 'data-copy' in a:self.active=(tag,a['data-copy']);self.parts=[]
+        def handle_data(self,data):
+            if self.active:self.parts.append(data)
+        def handle_endtag(self,tag):
+            if self.active and self.active[0]==tag:
+                self.blocks[self.active[1]]=''.join(self.parts);self.active=None
+    try:
+        d=json.loads(owner.read_text());parser=StoryText();parser.feed((SITE/'index.html').read_text())
+        assert d['status']=='verbatim' and len(d['slides'])==14
+        assert parser.sections==[x['id'] for x in d['slides']]
+        expected={f'{x["number"]}-{i+1}':t for x in d['slides'] for i,t in enumerate(x['paragraphs'])}
+        assert len(expected)==31 and parser.blocks==expected
+        assert not re.search(r'letter-spacing:\s*-', (SITE/'slides.css').read_text())
+        for name in ['feed.png','library.png']:
+            assert (SITE/'assets'/'screens'/name).is_file()
+    except (OSError,KeyError,TypeError,AssertionError,json.JSONDecodeError) as exc:
+        fail(owner,f'story text or slide validation failed: {type(exc).__name__}')
 
 
 def main() -> int:
@@ -360,6 +389,7 @@ def main() -> int:
         reconcile_grades()
     reconcile_expanded()
     reconcile_semantic()
+    reconcile_story()
     unique_records = list({json.dumps(x,sort_keys=True):x for x in RECORDS}.values())
     print(json.dumps({'status':'passed' if not ERRORS else 'blocked','files_checked':count,'references_checked':len(unique_records),'errors':sorted(set(ERRORS)),'warnings':sorted(set(WARNINGS)),'documents':[x for x in unique_records if x['kind']=='document'],'local_server_links':[x for x in unique_records if x['kind']=='local_server_link'],'anchors_recorded':sum(x['kind']=='anchor' for x in unique_records),'limitations':['Static checks cannot inspect private information embedded in images or PDFs.','Computed JS asset URLs and interactive states require browser QA.']},ensure_ascii=False,indent=2))
     return 1 if ERRORS else 0
