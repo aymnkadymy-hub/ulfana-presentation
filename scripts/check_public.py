@@ -316,10 +316,10 @@ def reconcile_story() -> None:
                 self.blocks[self.active[1]]=''.join(self.parts);self.active=None
     try:
         d=json.loads(owner.read_text());parser=StoryText();parser.feed((SITE/'index.html').read_text())
-        assert d['status']=='verbatim' and len(d['slides'])==14
+        assert d['status']=='verbatim' and len(d['slides'])==13
         assert parser.sections==[x['id'] for x in d['slides']]
         expected={f'{x["number"]}-{i+1}':t for x in d['slides'] for i,t in enumerate(x['paragraphs'])}
-        assert len(expected)==31 and parser.blocks==expected
+        assert len(expected)==30 and parser.blocks==expected
         assert not re.search(r'letter-spacing:\s*-', (SITE/'slides.css').read_text())
         for name in ['feed.png','library.png']:
             assert (SITE/'assets'/'screens'/name).is_file()

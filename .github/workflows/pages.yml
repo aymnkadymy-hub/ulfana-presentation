@@ -23,6 +23,7 @@ jobs:
       - name: Validate public package
         run: |
           node --check slides.js
+          node --check companions.js
           python3 scripts/check_public.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -5,7 +5,7 @@ root=Path(__file__).resolve().parents[1]
 out=root/'_site'
 if out.exists(): shutil.rmtree(out)
 out.mkdir()
-for name in ['index.html','slides.css','slides.js']:
+for name in ['index.html','slides.css','slides.js','companions.js']:
  shutil.copy2(root/name,out/name)
 for name in ['fonts','companions']:
  dst=out/'assets'/name;dst.mkdir(parents=True,exist_ok=True)

@@ -1,0 +1,205 @@
+/* Motion rules extracted from the Ulfana companion styles; drawing selectors scoped to presentation avatars. */
+.live-companion .cp-ch-thaloobi{--np-tass-o: 84px 46px;--cp-blink: 3.6s;}
+.live-companion [data-theme="dark"] .cp-ch-thaloobi{--np-tass-o: 84px 46px;--cp-blink: 3.6s;}
+.live-companion .cp-ch-mijo{--cp-blink: 6.8s;}
+.live-companion [data-theme="dark"] .cp-ch-mijo{--cp-blink: 6.8s;}
+.live-companion .mj-branch{transform-box: view-box;transform-origin: 92px 104px;animation: 11s ease-in-out 0s infinite normal none running mj-branch;}
+@keyframes mj-branch { 
+  0%, 4% { transform: rotate(0deg); }
+  8% { transform: rotate(-52deg) translate(-2px, 9px); }
+  14%, 22% { transform: rotate(0deg); }
+  26% { transform: rotate(-52deg) translate(-2px, 9px); }
+  32%, 40% { transform: rotate(0deg); }
+  44% { transform: rotate(-52deg) translate(-2px, 9px); }
+  50%, 58% { transform: rotate(0deg); }
+  62% { transform: rotate(-52deg) translate(-2px, 9px); }
+  68%, 76% { transform: rotate(0deg); }
+  80% { transform: rotate(-52deg) translate(-2px, 9px); }
+  86%, 100% { transform: rotate(0deg); }
+}
+.live-companion .mj-leaf{transform-box: fill-box;transform-origin: 0px 50%;}
+.live-companion .mj-l1{animation: 11s steps(1) 0s infinite normal none running mj-eat1;}
+.live-companion .mj-l2{animation: 11s steps(1) 0s infinite normal none running mj-eat2;}
+.live-companion .mj-l3{animation: 11s steps(1) 0s infinite normal none running mj-eat3;}
+.live-companion .mj-l4{animation: 11s steps(1) 0s infinite normal none running mj-eat4;}
+.live-companion .mj-l5{animation: 11s steps(1) 0s infinite normal none running mj-eat5;}
+@keyframes mj-eat1 { 
+  0%, 9% { opacity: 1; }
+  10%, 100% { opacity: 0; }
+}
+@keyframes mj-eat2 { 
+  0%, 27% { opacity: 1; }
+  28%, 100% { opacity: 0; }
+}
+@keyframes mj-eat3 { 
+  0%, 45% { opacity: 1; }
+  46%, 100% { opacity: 0; }
+}
+@keyframes mj-eat4 { 
+  0%, 63% { opacity: 1; }
+  64%, 100% { opacity: 0; }
+}
+@keyframes mj-eat5 { 
+  0%, 81% { opacity: 1; }
+  82%, 100% { opacity: 0; }
+}
+.live-companion .mj-jaw{transform-box: view-box;transform-origin: 60px 68px;animation: 1.05s ease-in-out 0s infinite normal none running mj-chew;}
+@keyframes mj-chew { 
+  0%, 100% { transform: translateY(0px) scaleY(1); }
+  50% { transform: translateY(0.9px) scaleY(0.975); }
+}
+.live-companion .cp-quiet .mj-branch,.live-companion .cp-quiet .mj-jaw,.live-companion .cp-quiet .mj-leaf{animation: auto ease 0s 1 normal none running none;}
+.live-companion .cp-cheer .mj-jaw{animation: 0.34s ease-in-out 0s 5 normal none running mj-chew;}
+.live-companion .cp-ch-addoun{--cp-blink: 4.2s;}
+.live-companion [data-theme="dark"] .cp-ch-addoun{--cp-blink: 4.2s;}
+.live-companion .ad-preen{transform-box: view-box;transform-origin: 64px 96px;animation: 5.4s ease-in-out 0s infinite normal none running ad-head;}
+@keyframes ad-head { 
+  0%, 64%, 100% { transform: translateY(0px); }
+  30%, 44% { transform: translateY(-1.4px); }
+}
+.live-companion .ad-crestg{transform-box: view-box;transform-origin: 62px 38px;animation: 7.6s ease-in-out 0s infinite normal none running ad-crest-up;}
+@keyframes ad-crest-up { 
+  0%, 100% { transform: rotate(0deg) translateY(0px); }
+  26% { transform: rotate(-5deg) translateY(-2px); }
+  54% { transform: rotate(2.4deg) translateY(-0.6px); }
+  78% { transform: rotate(-1.8deg) translateY(-1.4px); }
+}
+@keyframes ad-peck { 
+  0%, 30% { transform: rotate(0deg); }
+  34% { transform: rotate(5deg); }
+  38%, 44% { transform: rotate(0deg); }
+  48% { transform: rotate(5deg); }
+  52%, 100% { transform: rotate(0deg); }
+}
+.live-companion .cp-quiet .ad-preen,.live-companion .cp-quiet .ad-crestg,.live-companion .cp-quiet .ad-beakg{animation: auto ease 0s 1 normal none running none;}
+.live-companion .fx-tailg{transform-box: view-box;transform-origin: 78px 118px;animation: 2.9s ease-in-out 0s infinite normal none running fx-wag;}
+@keyframes fx-wag { 
+  0% { transform: rotate(-4.8deg); }
+  28% { transform: rotate(5deg); }
+  50% { transform: rotate(7.2deg); }
+  78% { transform: rotate(-2.4deg); }
+  100% { transform: rotate(-4.8deg); }
+}
+.live-companion .cp-quiet .fx-tailg{animation: auto ease 0s 1 normal none running none;}
+.live-companion .cp-cheer .fx-tailg{animation: 0.62s ease-in-out 0s 3 normal none running fx-wag;}
+.live-companion .np-eyes{transition: transform 0.08s linear;}
+.live-companion .cp-fig{transform: rotate(var(--cp-lean, 0deg));}
+.live-companion .cp-fig{animation: 3.8s ease-in-out 0s infinite normal none running cp-breathe;}
+@keyframes cp-breathe { 
+  0%, 100% { transform: rotate(var(--cp-lean,0deg)) translateY(0) scale(1); }
+  50% { transform: rotate(var(--cp-lean,0deg)) translateY(-3.5px) scale(1.016); }
+}
+.live-companion .np-tassel{transform-box: view-box;transform-origin: var(--np-tass-o, 106px 40px);animation: 3.4s ease-in-out 0s infinite normal none running cp-sway;}
+@keyframes cp-sway { 
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+.live-companion .np-glow{animation: 4s ease-in-out 0s infinite normal none running cp-lume;}
+@keyframes cp-lume { 
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+.live-companion .cp-ch-ozis{--cp-blink: 4.9s;}
+.live-companion [data-theme="dark"] .cp-ch-ozis{--cp-blink: 4.9s;}
+.live-companion .cp-ch-ozis svg{animation: 7.4s ease-in-out 0s infinite normal none running oz-float;}
+.live-companion .oz-spear{transform-box: view-box;transform-origin: 101px 100px;animation: 5.3s ease-in-out 0s infinite normal none running oz-sway;}
+@keyframes oz-sway { 
+  0%, 100% { transform: rotate(-1.4deg); }
+  50% { transform: rotate(1.4deg); }
+}
+.live-companion .cp-quiet .oz-spear{animation: auto ease 0s 1 normal none running none;}
+.live-companion .oz-w2{animation: 3.9s ease-in-out 0s infinite normal none running oz-w2;}
+.live-companion .oz-w3{animation: 3.9s ease-in-out 0s infinite normal none running oz-w3;}
+.live-companion .oz-w4{animation: 3.9s ease-in-out 0s infinite normal none running oz-w4;}
+.live-companion .oz-w5{animation: 3.9s ease-in-out 0s infinite normal none running oz-w5;}
+.live-companion .oz-w6{animation: 3.9s ease-in-out 0s infinite normal none running oz-w6;}
+.live-companion .oz-w7{animation: 3.9s ease-in-out 0s infinite normal none running oz-w7;}
+.live-companion .oz-w8{animation: 3.9s ease-in-out 0s infinite normal none running oz-w8;}
+.live-companion .oz-w0{animation: 3.9s ease-in-out 0s infinite normal none running oz-w0;}
+.live-companion .oz-w9{animation: 3.9s ease-in-out 0s infinite normal none running oz-w9;}
+.live-companion .cp-quiet .oz-w2,.live-companion .cp-quiet .oz-w3,.live-companion .cp-quiet .oz-w4,.live-companion .cp-quiet .oz-w5,.live-companion .cp-quiet .oz-w6,.live-companion .cp-quiet .oz-w7,.live-companion .cp-quiet .oz-w8,.live-companion .cp-quiet .oz-w0,.live-companion .cp-quiet .oz-w9{animation: auto ease 0s 1 normal none running none;}
+@keyframes oz-float { 
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-4px) rotate(1deg); }
+}
+.live-companion .cp-quiet .cp-ch-ozis svg{animation: auto ease 0s 1 normal none running none;}
+.live-companion .oz-valve{transform-box: fill-box;transform-origin: 100% 100%;animation: oz-clam var(--oz-beat,2.4s) ease-in-out infinite;}
+@keyframes oz-clam { 
+  0%, 62%, 100% { transform: rotate(12deg); }
+  14%, 44% { transform: rotate(5deg); }
+}
+.live-companion .oz-note{animation: oz-rise calc(var(--oz-beat,2.4s) * 3) linear infinite;}
+.live-companion .oz-n2{animation-delay: calc(var(--oz-beat,2.4s) * 1);}
+.live-companion .oz-n3{animation-delay: calc(var(--oz-beat,2.4s) * 2);}
+@keyframes oz-rise { 
+  0% { opacity: 0; transform: translate(0px, 0px) scale(0.45); }
+  8% { opacity: 0.95; transform: translate(calc(var(--oz-dx,0px) * .2),-5px) scale(var(--oz-sc,1)); }
+  70% { opacity: 0.6; transform: translate(calc(var(--oz-dx,0px) * .8),-30px) scale(var(--oz-sc,1)); }
+  92%, 100% { opacity: 0; transform: translate(var(--oz-dx,0px),-42px) scale(calc(var(--oz-sc,1) * .86)); }
+}
+@keyframes oz-drift { 
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+@keyframes oz-wave { 
+  0%, 100% { transform: rotate(-3.4deg); }
+  50% { transform: rotate(3.4deg); }
+}
+.live-companion .cp-quiet .oz-valve,.live-companion .cp-quiet .oz-tailg,.live-companion .cp-quiet .oz-note,.live-companion .cp-quiet .oz-hairb,.live-companion .cp-quiet .oz-hairf,.live-companion .cp-quiet .oz-earl,.live-companion .cp-quiet .oz-earr,.live-companion .cp-quiet .oz-flukeg{animation: auto ease 0s 1 normal none running none;}
+.live-companion .cp-cheer .oz-valve{animation: 0.5s ease-in-out 0s 4 normal none running oz-clam;}
+.live-companion .cp-quiet .cp-fig,.live-companion .cp-quiet .np-tassel,.live-companion .cp-quiet .np-glow{animation: auto ease 0s 1 normal none running none;}
+.live-companion .cp-pop .cp-fig{animation: 0.5s cubic-bezier(0.3, 1.4, 0.4, 1) 0s 1 normal none running cp-pop;}
+@keyframes cp-pop { 
+  0% { transform: rotate(var(--cp-lean,0deg)) translateY(6px) scale(.9); }
+  55% { transform: rotate(var(--cp-lean,0deg)) translateY(-5px) scale(1.06); }
+  100% { transform: rotate(var(--cp-lean,0deg)); }
+}
+.live-companion .cp-poke .cp-fig{animation: 0.62s cubic-bezier(0.3, 1.5, 0.4, 1) 0s 1 normal none running cp-poke;}
+@keyframes cp-poke { 
+  0% { transform: rotate(var(--cp-lean,0deg)) scale(1); }
+  22% { transform: rotate(var(--cp-lean,0deg)) scale(.9,1.08) translateY(3px); }
+  48% { transform: rotate(var(--cp-lean,0deg)) scale(1.06,.95) translateY(-5px); }
+  70% { transform: rotate(var(--cp-lean,0deg)) scale(.97,1.03) translateY(1px); }
+  86% { transform: rotate(var(--cp-lean,0deg)) scale(1.02,.98) translateY(-2px); }
+  100% { transform: rotate(var(--cp-lean,0deg)) scale(1); }
+}
+.live-companion .cp-poke .ad-crestg{animation: 0.62s cubic-bezier(0.3, 1.6, 0.4, 1) 0s 1 normal none running ad-flick;}
+@keyframes ad-flick { 
+  0% { transform: rotate(0deg); }
+  28% { transform: rotate(-13deg); }
+  56% { transform: rotate(6deg); }
+  78% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+.live-companion .cp-cheer .ad-crestg{animation: 0.78s ease-in-out 0s 2 normal none running ad-hail;}
+@keyframes ad-hail { 
+  0%, 100% { transform: rotate(0deg) scaleY(1); }
+  40% { transform: rotate(-9deg) scaleY(1.14); }
+}
+.live-companion .cp-cheer .cp-fig{animation: 0.78s cubic-bezier(0.3, 1.35, 0.4, 1) 0s 1 normal none running cp-cheer;}
+@keyframes cp-cheer { 
+  0% { transform: rotate(var(--cp-lean,0deg)) translateY(0); }
+  22% { transform: rotate(-7deg) translateY(-18px); }
+  46% { transform: rotate(var(--cp-lean,0deg)) translateY(0); }
+  66% { transform: rotate(5deg) translateY(-10px); }
+  100% { transform: rotate(var(--cp-lean,0deg)) translateY(0); }
+}
+.live-companion .cp-cheer .np-tassel{animation: 0.78s cubic-bezier(0.3, 1.5, 0.4, 1) 0s 1 normal none running cp-tfling;}
+@keyframes cp-tfling { 
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(-32deg); }
+  62% { transform: rotate(18deg); }
+  100% { transform: rotate(0deg); }
+}
+.live-companion .np-eye{transform-box: fill-box;transform-origin: center center;animation: cp-blink var(--cp-blink,5.6s) infinite;}
+.live-companion .np-eye-r{animation-delay: 0.06s;}
+@keyframes cp-blink { 
+  0%, 96.6%, 100% { transform: scaleY(1); }
+  98.2% { transform: scaleY(0.08); }
+}
+.live-companion .cp-quiet .np-eye{animation-duration: 8s;}
+.live-companion .cp-wink .np-eye{animation: 0.2s ease-in-out 0s 1 normal none running cp-wink !important;}
+@keyframes cp-wink { 
+  0%, 100% { transform: scaleY(1); }
+  45% { transform: scaleY(0.06); }
+}
