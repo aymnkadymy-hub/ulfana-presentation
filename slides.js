@@ -15,7 +15,7 @@ function go(n,hash=true){
  document.title=`أولفانا — ${slides[current].dataset.title}`;
  if(hash)history.replaceState(null,'',`#${slides[current].id}`);
 }
-function fromHash(){const aliases={'your-choice':'your-choices','closer-to-knowledge':'retrieval-results','your-companion':'think-different','one-ulfana':'the-student-first','your-people':'built-around-you'};const id=location.hash.slice(1),n=slides.findIndex(s=>s.id===(aliases[id]||id));go(n<0?0:n,false);}
+function fromHash(){const aliases={'your-choice':'your-choices','closer-to-knowledge':'retrieval-results','your-companion':'think-different','one-ulfana':'the-student-first','your-people':'think-different','built-around-you':'think-different','behind-the-experience':'knowledge-from-sources'};const id=location.hash.slice(1),n=slides.findIndex(s=>s.id===(aliases[id]||id));go(n<0?0:n,false);}
 $('#slide-index').replaceChildren(...slides.map((s,i)=>{const b=document.createElement('button'),num=document.createElement('span');num.textContent=String(i+1).padStart(2,'0');b.append(num,document.createTextNode(s.dataset.title));b.onclick=()=>{closeDialog($('#index-dialog'));go(i);$('#deck').focus();};return b;}));
 $('#next').onclick=()=>go(current+1);$('#previous').onclick=()=>go(current-1);
 document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>go(current+1));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(Number(b.dataset.go)));
@@ -30,8 +30,6 @@ $('#fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await docum
 function motion(v){document.documentElement.classList.toggle('reduce',v);$('#motion').setAttribute('aria-pressed',String(v));$('#motion').setAttribute('aria-label',v?'تشغيل الحركة':'إيقاف الحركة');$('#motion').title=v?'تشغيل الحركة':'إيقاف الحركة';}motion(matchMedia('(prefers-reduced-motion: reduce)').matches);$('#motion').onclick=()=>motion(!document.documentElement.classList.contains('reduce'));
 document.querySelectorAll('[data-companion]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-companion]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('#companion-main').src=`assets/companions/${b.dataset.companion}.svg`;$('#companion-main').alt=b.dataset.name;$('#companion-name').textContent=b.dataset.name;});
 document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>b.setAttribute('aria-pressed',String(b.getAttribute('aria-pressed')!=='true')));
-const explanations=['تبدأ الرحلة بما تريد فهمه.','يرجع النظام إلى المصادر التعليمية المرتبطة بسؤالك.','يبحث عن المقاطع المناسبة ويرتّبها.','يستخدم المقاطع المسترجعة لصياغة إجابة مرتبطة بالمصدر.'];
-document.querySelectorAll('[data-rag-step]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-rag-step]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('#rag-description').textContent=explanations[Number(b.dataset.ragStep)];});
 document.querySelectorAll('[data-image]').forEach(b=>b.onclick=()=>{$('#zoomed-image').src=b.dataset.image;$('#zoomed-image').alt=b.dataset.imageTitle;$('#image-title').textContent=b.dataset.imageTitle;showDialog($('#image-dialog'));});
 let evidenceLoaded=false;
 async function loadEvidence(){if(evidenceLoaded)return;

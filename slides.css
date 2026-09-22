@@ -18,3 +18,168 @@ dialog{border:1px solid var(--line);border-radius:22px;background:var(--paper);c
 .live-companion{position:relative;display:inline-block;flex-shrink:0;vertical-align:middle;cursor:pointer;animation:none!important}.live-companion>img{display:block;width:100%!important;height:100%!important;object-fit:contain;animation:none!important;transition:none!important}.live-companion.live-ready>img{opacity:0}.live-state{position:absolute;inset:0;display:block;pointer-events:none}.live-companion .cp-fig{display:block;width:100%;height:100%;transform-origin:center}.live-companion .cp-ch{display:contents}.live-companion svg{display:block;width:100%;height:100%;overflow:visible}.live-companion[data-motion=off] *{animation-play-state:paused!important}.reduce .live-companion *{animation:none!important;transition:none!important}.live-companion:focus-visible{outline:2px solid var(--brown);outline-offset:5px;border-radius:18px}@media(prefers-reduced-motion:reduce){.live-companion *{animation:none!important;transition:none!important}}@media print{.live-companion .live-state{display:none!important}.live-companion>img{opacity:1!important}.live-companion{outline:none!important}}
 
 .live-companion,.live-companion span{margin:0!important}
+
+/* ══ Phone pass ══════════════════════════════════════════════════════
+   Arabic set at 23px/1.9 inside a 330px column broke sentences into
+   three-word lines and pushed every slide past the fold. The scale below
+   is proportional to the viewport instead of fixed, with leading tuned
+   for Arabic rather than Latin. No negative letter-spacing: it welds
+   Arabic joins together (see the mobile spacing fix in e05aed3). */
+@media(max-width:800px){
+ .slide,.js .slide{padding:24px max(18px,4.6vw);gap:20px}
+ .copy{max-width:none}
+ .eyebrow{font-size:12px;margin-bottom:9px}
+ .slide h2{font:700 clamp(23px,6.1vw,30px)/1.45 'Noto Kufi Arabic',sans-serif;margin-bottom:13px}
+ .script-text{font-size:clamp(17px,4.85vw,21px);line-height:1.72;margin-bottom:12px}
+ .opening h1.script-text{font-size:clamp(22px,6.3vw,29px);line-height:1.6}
+ .opening .primary{margin-top:15px;padding:12px 20px;gap:22px;font-size:15px}
+ .belief .script-text:first-of-type{font-size:clamp(17px,4.6vw,20px)}
+ .belief .script-text:last-child{font-size:clamp(28px,8.4vw,38px);line-height:1.55}
+ .belief-mark{font-size:150px}
+ .belief-line{gap:14px;font-size:15px}
+ .belief-line i{width:36px}
+ .design-last .script-text{font-size:clamp(17px,4.6vw,20px)}
+ .principles .script-text{font-size:clamp(15px,4.1vw,18px);margin-bottom:0}
+ .principles>div{padding:17px 10px}
+ .principles svg{width:33px;height:33px}
+ .conclusion .script-text{font-size:clamp(16px,4.5vw,19px);line-height:1.7;margin-bottom:11px}
+ .conclusion .script-text:last-child{font-size:clamp(22px,6.4vw,27px);line-height:1.6}
+ .source-visual{max-width:330px}
+ .source-excerpt p{font-size:17px}
+ .main-chart{padding:20px 20px 18px}
+ .gain strong{font-size:36px}
+ .contact h2{font-size:clamp(26px,7.4vw,33px)}
+ .contact-brand{font-size:33px}
+ .contact-brand img{width:50px;height:50px}
+ .contact-links a{padding:14px}
+ .contact-links b{font-size:18px}
+}
+@media(max-width:520px){
+ .slide,.js .slide{padding:20px 18px;gap:16px}
+ .student-orbit{width:min(300px,86vw);margin:0 auto}
+ .conclusion .student-orbit{width:min(255px,74vw)}
+ .orbit-label{font-size:13px;padding:8px 11px;gap:6px;border-radius:13px}
+ .orbit-label svg{width:18px;height:18px}
+ .student-center>span{font-size:27px}
+ .spark{font-size:31px}
+ .spark.b{font-size:22px}
+}
+
+/* ══ Companion stage ═════════════════════════════════════════════════
+   Amiri splits the hamza off the alef in "أدّون" — the alef-hamza and the
+   shadda collide and the hamza floats free. IBM Plex sets the same five
+   names correctly, so the name carries the body voice instead. */
+.companion-stage h3{font-family:'IBM Plex Sans Arabic',sans-serif;font-weight:600;letter-spacing:normal}
+@media(max-width:800px){
+ /* Side by side, the name sat in the figure's lap. Stack and centre it,
+    and keep the halo concentric with the companion at every width. */
+ .companion-stage{flex-direction:column;gap:8px;min-height:0}
+ .companion-stage>div{text-align:center}
+ .companion-stage>:is(img,.live-companion){width:min(216px,58vw);height:min(216px,58vw)}
+ .companion-halo{right:0;left:0;top:0;margin-inline:auto;width:min(196px,53vw);height:min(196px,53vw)}
+ .companion-stage h3{font-size:clamp(25px,7vw,32px);line-height:1.35}
+ /* five companions stay on one row; the buttons share the width. */
+ .companion-picker{gap:6px;margin-top:12px;flex-wrap:nowrap;width:100%}
+ .companion-picker button{flex:1 1 0;width:auto;min-width:0;max-width:74px;padding:7px 3px}
+ .companion-picker img{width:100%;height:auto;aspect-ratio:1/1}
+ .companion-picker span{font-size:11px}
+}
+
+/* ══ Platform link (closing slide) ═══════════════════════════════════ */
+.platform-link{display:inline-flex;align-items:center;gap:12px;align-self:center;padding:13px 22px;border:1px solid #9a7c5d;border-radius:100px;background:#ffffff0a;text-decoration:none;color:#fff8eb}
+.platform-link:hover{background:#ffffff14}
+.platform-link img{background:var(--paper);padding:5px;border-radius:9px;flex-shrink:0}
+.platform-link span{font-size:15px;color:#d8c2a3}
+.platform-link b{font-weight:500;font-size:19px;letter-spacing:.4px}
+@media(max-width:520px){.platform-link{padding:11px 18px;gap:9px}.platform-link span{font-size:13px}.platform-link b{font-size:17px}}
+
+
+/* The retrieval diagram ran past the fold once the copy above it grew. */
+@media(max-width:800px){
+ .source-visual{max-width:310px;gap:6px}
+ .source-book{min-height:80px;width:126px;padding:10px}
+ .source-book svg{width:22px;height:22px}
+ .source-book b{font-size:21px}
+ .source-book span{font-size:11px}
+ .source-excerpt{padding:10px 15px}
+ .source-excerpt p{font-size:16px;margin:4px 0}
+ .source-answer{font-size:14px;padding:8px 15px}
+ .source-arrow{font-size:16px}
+}
+
+/* Short phones (a 640px-tall viewport leaves ~515px for a slide). Everything
+   still scrolls, but the deck reads better when a slide fits at a glance. */
+@media(max-width:800px) and (max-height:760px){
+ .slide,.js .slide{padding:16px max(16px,4vw);gap:12px}
+ .eyebrow{font-size:11px;margin-bottom:6px}
+ .slide h2{font-size:clamp(21px,5.6vw,26px);line-height:1.38;margin-bottom:9px}
+ .script-text{font-size:clamp(15px,4.3vw,18px);line-height:1.62;margin-bottom:9px}
+ .opening h1.script-text{font-size:clamp(20px,5.7vw,25px);line-height:1.5}
+ .student-orbit{width:min(232px,64vw)}
+ .conclusion .student-orbit{width:min(200px,56vw)}
+ .conclusion .script-text:last-child{font-size:clamp(19px,5.4vw,23px)}
+ .belief .script-text:last-child{font-size:clamp(24px,7vw,31px)}
+ .image-zoom>img{max-height:210px}
+ .choice-visual{padding:15px}
+ .choice-options button{padding:9px;font-size:15px}
+ .choice-result{font-size:17px}
+ .source-visual{max-width:270px}
+ .source-book{min-height:62px;width:104px;padding:7px}
+ .source-book b{font-size:17px}
+ .source-excerpt{padding:7px 12px}
+ .source-excerpt p{font-size:14px}
+ .source-answer{font-size:13px;padding:6px 12px}
+ .companion-stage>:is(img,.live-companion){width:min(150px,42vw);height:min(150px,42vw)}
+ .companion-halo{width:min(136px,38vw);height:min(136px,38vw)}
+ .companion-stage h3{font-size:clamp(20px,5.6vw,25px)}
+ .companion-picker img{width:78%}
+ .companion-picker span{font-size:10px}
+ .main-chart{padding:14px 14px 12px}
+ .main-chart figcaption{font-size:15px;margin-bottom:12px}
+ .columns{height:132px;margin-bottom:38px}
+ .column>strong{font-size:22px}
+ .bar{font-size:16px}
+ .gain{margin:9px 0}
+ .gain strong{font-size:29px}
+ .gain span{font-size:12px}
+ .principles>div{padding:11px 7px}
+ .principles svg{width:26px;height:26px;margin-bottom:7px}
+}
+@media(max-width:800px) and (max-height:760px){
+ .source-visual{gap:3px}
+ .source-book{min-height:0;width:96px;padding:6px}
+ .source-book svg{width:18px;height:18px}
+ .source-book b{font-size:15px}
+ .source-book span{font-size:10px}
+ .source-excerpt{padding:6px 11px}
+ .source-excerpt p{font-size:13px;margin:3px 0}
+ .source-excerpt .source-tag{font-size:10px}
+ .source-arrow{font-size:13px;line-height:1}
+ .source-answer{font-size:12px;padding:5px 11px}
+ .source-answer svg{width:17px;height:17px}
+ .text-button{font-size:11px;padding:5px 0}
+}
+/* The 1.9 body leading made the dialog title box taller than its close button. */
+.dialog-head h2{line-height:1.4}
+
+/* Narrow phones wrap the copy onto extra lines even when the viewport is tall
+   enough to miss the short-phone rules above. Trim the two densest slides. */
+@media(max-width:395px) and (min-height:761px){
+ .source-visual{max-width:290px;gap:2px}
+ .source-book{min-height:0;width:108px;padding:8px}
+ .source-book svg{width:20px;height:20px}
+ .source-book b{font-size:18px}
+ .source-book span{font-size:10px}
+ .source-excerpt{padding:8px 13px}
+ .source-excerpt p{font-size:15px;margin:4px 0}
+ .source-arrow{font-size:14px;line-height:1}
+ .source-answer{font-size:13px;padding:7px 13px}
+ .main-chart{max-width:100%;padding:16px 16px 14px}
+ .main-chart figcaption{font-size:16px;margin-bottom:14px}
+ .columns{height:158px;margin-bottom:40px}
+ .column{width:96px}
+ .column>strong{font-size:24px}
+ .bar{font-size:17px}
+ .gain{margin:11px 0}
+ .gain strong{font-size:33px}
+}

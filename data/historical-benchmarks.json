@@ -16,7 +16,25 @@
         "total": 67
       }
     },
-    "scope": "Historical same-question retrieval ablation: RRF fusion without reranker vs full pipeline. Rank-1 improves; any-rank coverage does not. Not answer accuracy; not a current-system claim."
+    "scope": "Historical same-question retrieval ablation: RRF fusion without reranker vs full pipeline. Rank-1 improves; any-rank coverage does not. Not answer accuracy. Re-measured on the live configuration 2026-09-23: rank-1 reproduced exactly.",
+    "reverified": {
+      "date": "2026-09-23",
+      "result": "المركز الأول تطابق تمامًا: 41 و26 من 67. تحرّكت رتب فردية، وتحسّن الوصول بأي رتبة من 54 إلى 55 ومن 59 إلى 60.",
+      "arms": {
+        "full": {
+          "at1": 41,
+          "retrieved_reference": 55,
+          "total": 67
+        },
+        "fused": {
+          "at1": 26,
+          "retrieved_reference": 60,
+          "total": 67
+        }
+      },
+      "source": "fusion-ablation-2026-09-23.json",
+      "sha256": "0afd8bf6fd2762dd0a890a8e7277b969db1368f66661f3bcc3be5b20876cc2fe"
+    }
   },
   "eval_set.results.json": {
     "source": "eval_set.results.json",

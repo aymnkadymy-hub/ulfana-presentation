@@ -24,7 +24,7 @@ function wink(s,poke=false){if(!visible(s)||!s.state)return;s.state.classList.re
 async function mount(s){
  const match=s.img.getAttribute('src')?.match(/\/([a-z]+)\.svg/);if(!match||!traits[match[1]])return;
  const id=match[1],ticket=++s.ticket;if(s.id!==id){reset(s);s.state?.remove();s.state=null;s.eyes=null;s.host.classList.remove('live-ready');}s.id=id;s.host.setAttribute('aria-label',`${s.img.alt} — المس أو اضغط ليتفاعل`);
- if(!cache.has(id))cache.set(id,fetch(`assets/companions/${id}-live.svg?v=companion-v1`).then(r=>{if(!r.ok)throw Error('Companion unavailable');return r.text();}).catch(e=>{cache.delete(id);throw e;}));
+ if(!cache.has(id))cache.set(id,fetch(`assets/companions/${id}-live.svg?v=phone-v2`).then(r=>{if(!r.ok)throw Error('Companion unavailable');return r.text();}).catch(e=>{cache.delete(id);throw e;}));
  try{
   const source=await cache.get(id);if(ticket!==s.ticket)return;
   const doc=new DOMParser().parseFromString(source,'image/svg+xml'),svg=doc.documentElement;
@@ -53,6 +53,28 @@ window.addEventListener('pointerdown',e=>{if(e.isPrimary===false||disabled())ret
 window.addEventListener('pointermove',e=>{if(e.isPrimary===false||(e.pointerType==='touch'&&e.pointerId!==held))return;lookAt(e.clientX,e.clientY);},{passive:true});
 function release(e){if(e.pointerId!==held)return;held=-1;clearTimeout(returnTimer);returnTimer=setTimeout(center,1600);}
 window.addEventListener('pointerup',release,{passive:true});window.addEventListener('pointercancel',release,{passive:true});window.addEventListener('pointerleave',center,{passive:true});window.addEventListener('blur',center);
+/* A phone has no hover, so lookAt only ran while a finger was held down and
+   the companion read as a still picture. A slow idle glance gives it life on
+   touch; disabled() still defers to reduced motion and hidden slides. */
+const touchOnly=matchMedia('(hover: none)');
+let idleTimer=0;
+function idle(){
+ clearTimeout(idleTimer);
+ idleTimer=setTimeout(()=>{
+  if(held<0&&touchOnly.matches&&!disabled()){
+   let any=false;
+   for(const s of instances){
+    if(!visible(s)||!s.eyes)continue;
+    const t=traits[s.id],a=Math.random()*Math.PI*2,k=.3+Math.random()*.55;
+    s.want={x:Math.cos(a)*t.gaze*k,y:Math.sin(a)*t.gaze*.8*k,r:Math.cos(a)*t.lean*k*.45};
+    any=true;
+   }
+   if(any)schedule();
+  }
+  idle();
+ },1900+Math.random()*1500);
+}
+idle();
 window.addEventListener('resize',sync,{passive:true});document.querySelector('#deck').addEventListener('scroll',sync,{passive:true,capture:true});document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);
 window.addEventListener('beforeprint',()=>{printing=true;sync();});window.addEventListener('afterprint',()=>{printing=false;sync();});
 new ResizeObserver(sync).observe(document.querySelector('#deck'));sync();
