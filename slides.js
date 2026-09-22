@@ -48,21 +48,39 @@ async function loadEvidence(){if(evidenceLoaded)return;
   for(const [id,v]of Object.entries(d.models)){const row=document.createElement('div');row.className='mini-model';const label=document.createElement('span');label.textContent=names[id]||id;const bar=document.createElement('i');bar.style.width=`${v.hit/v.of*45}%`;const count=document.createElement('b');count.textContent=`${v.hit}/${v.of}`;row.append(label,bar,count);$('#historic-models').append(row);}
  }
  if(semantic.status==='fulfilled'){
-  const d=semantic.value,box=$('#semantic-results');box.replaceChildren();
-  const fig=document.createElement('figure');fig.className='quality-chart';
-  const cap=document.createElement('figcaption');cap.textContent='جواب مكتمل وشرح سليم وفق المصدر';fig.append(cap);
-  for(const [arm,label]of [['alone','Gemma وحده'],['rag','مع أولفانا']]){
-   const n=d.base_answer_quality[arm].complete,total=d.base_answer_quality.total;
-   const row=document.createElement('div');row.className='quality-row';
-   const name=document.createElement('span');name.textContent=label;
-   const track=document.createElement('div');track.className='quality-track';const bar=document.createElement('i');bar.style.width=`${n/total*100}%`;track.append(bar);
-   const count=document.createElement('b');count.textContent=`${n}/${total}`;row.append(name,track,count);fig.append(row);
+  const d=semantic.value,t=d.paired_tests,box=$('#semantic-results');box.replaceChildren();
+  const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;};
+  // Lead with the finding that survives a paired test, not the bigger-looking one.
+  const kpi=el('div','kpi-card');
+  kpi.append(el('span','kpi-label','الأجوبة الخاطئة أو الممتنعة — من 125 سؤالًا'));
+  const pair=el('div','kpi-pair');
+  for(const [arm,label] of [['alone','النموذج وحده'],['rag','مع أولفانا']]){
+   const side=el('div','kpi-side'+(arm==='rag'?' kpi-good':''));
+   side.append(el('b',null,String(t.wrong_answer[arm])),el('span',null,label));
+   pair.append(side);
+   if(arm==='alone')pair.append(el('i','kpi-arrow','←'));
   }
-  const note=document.createElement('small');note.textContent='الأسئلة الأصلية للملفين · 125 سؤالًا بعد استبعاد 5 أسئلة ملتبسة من الطرفين · المحور 0–100% · أولفانا تشمل الكتب والويب';fig.append(note);box.append(fig);
-  const c=d.conversation,p=document.createElement('p');p.textContent=`في المحادثات المفتوحة: ${c.alone.complete} من 24 جوابًا مكتملًا للنموذج وحده، و${c.rag.complete} مع أولفانا. المراجعة تشمل المعنى والشرح، وليست مجرد مطابقة كلمات أو أرقام صفحات.`;box.append(p);
-  const table=document.createElement('table');table.className='result-table semantic-table';table.innerHTML='<thead><tr><th>المجموعة</th><th>وحده</th><th>أولفانا</th></tr></thead>';const body=document.createElement('tbody');
-  for(const g of d.groups){const tr=document.createElement('tr');for(const value of [g.label,`${g.alone.complete}/${g.eligible}`,`${g.rag.complete}/${g.eligible}`]){const td=document.createElement('td');td.textContent=value;tr.append(td);}body.append(tr);}table.append(body);box.append(table);
-  const limits=document.createElement('p');limits.className='review-note';limits.textContent='مراجعة مباشرة أجراها المساعد، غير معماة، بنموذج واحد. أسئلة إعادة الصياغة ورسائل المتابعة ليست عينات مستقلة. إسناد الجواب للمصدر يُراجع منفصلًا عن صحة معناه. لا تعزل هذه المقارنة أثر RAG وحده.';box.append(limits);
+  kpi.append(pair);
+  kpi.append(el('p','kpi-plain','بعبارة بسيطة: النموذج وحده أخطأ في نحو سؤال من كل أربعة. ومع ملف الطالب نفسه، أخطأ في نحو سؤال من كل تسعة.'));
+  kpi.append(el('small','kpi-stat',`فرق حقيقي لا صدفة: تحسّن في ${t.wrong_answer.ulfana_better} سؤالًا وتراجع في ${t.wrong_answer.ulfana_worse}، على الأسئلة نفسها · اختبار McNemar، p=${t.wrong_answer.p_value}`));
+  box.append(kpi);
+  // Publishing our own null result is what makes the one above credible.
+  const nul=el('div','kpi-null');
+  nul.append(el('b',null,'وما لم يتحسّن:'));
+  nul.append(el('p',null,`اكتمال الجواب وجودة شرحه بقيا كما هما عمليًا: ${t.complete_answer.alone} مقابل ${t.complete_answer.rag} من ${t.complete_answer.n}. الفرق داخل حدود الصدفة (p=${t.complete_answer.p_value})، فلا ندّعي تحسّنًا فيه.`));
+  nul.append(el('p',null,`وفي المحادثات المترابطة: ${t.conversations.alone} مقابل ${t.conversations.rag} من ${t.conversations.n} — عيّنة أصغر من أن تحسم اتجاهًا (p=${t.conversations.p_value}).`));
+  box.append(nul);
+  const table=el('table','result-table semantic-table');
+  table.innerHTML='<thead><tr><th>المجموعة</th><th>وحده</th><th>أولفانا</th><th>الدلالة</th></tr></thead>';
+  const body=el('tbody');
+  for(const g of d.groups){
+   const k=t.by_group[g.id],tr=el('tr');
+   for(const v of [g.label,`${g.alone.complete}/${g.eligible}`,`${g.rag.complete}/${g.eligible}`,
+                   k?(k.p_value<0.05?`p=${k.p_value}`:'بلا فرق دالّ'):'—'])tr.append(el('td',null,v));
+   body.append(tr);
+  }
+  table.append(body);box.append(el('p','table-cap','اكتمال الجواب لكل مجموعة. لا مجموعة منها تُظهر فرقًا دالًّا في أي اتجاه — بما فيها المجموعتان اللتان يبدو فيها النموذج وحده أعلى.'));box.append(table);
+  box.append(el('p','review-note','مراجعة مباشرة أجراها المساعد، غير معماة، بنموذج واحد محليًا. أسئلة إعادة الصياغة ورسائل المتابعة ليست عينات مستقلة. إسناد الجواب للمصدر يُراجع منفصلًا عن صحة معناه. المقارنة للنظام الكامل ولا تعزل أثر الاسترجاع وحده.'));
  }else{$('#semantic-results').textContent='يمكنك تنزيل المراجعة من الرابط أدناه.';}
  evidenceLoaded=expanded.status==='fulfilled'&&historic.status==='fulfilled'&&semantic.status==='fulfilled';
 }

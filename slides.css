@@ -183,3 +183,33 @@ dialog{border:1px solid var(--line);border-radius:22px;background:var(--paper);c
  .gain{margin:11px 0}
  .gain strong{font-size:33px}
 }
+
+/* ══ Evidence KPI ════════════════════════════════════════════════════
+   The old headline (71→78 complete answers) does not survive a paired
+   test, p=0.39. The drop in wrong answers does, p<0.001. The card leads
+   with the finding that holds and states the null one underneath. */
+.kpi-card{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--white);margin:6px 0 16px}
+.kpi-label{display:block;font-size:13px;color:var(--muted);margin-bottom:16px}
+.kpi-pair{display:flex;align-items:center;justify-content:center;gap:clamp(14px,5vw,34px);flex-wrap:wrap}
+.kpi-side{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:96px;padding:13px 17px;border-radius:14px;background:#efe6d8}
+.kpi-side b{font:700 clamp(38px,11vw,52px)/1 'Noto Kufi Arabic',sans-serif;color:var(--muted)}
+.kpi-side span{font-size:13px;color:var(--muted)}
+.kpi-good{background:#e0e9dc}
+.kpi-good b{color:var(--green)}
+.kpi-good span{color:var(--green)}
+.kpi-arrow{font-style:normal;font-size:26px;color:var(--brown);line-height:1}
+.kpi-plain{font-size:16px;line-height:1.85;margin:17px 0 0;text-wrap:pretty}
+.kpi-stat{display:block;font-size:12px;color:var(--muted);margin-top:9px;line-height:1.7}
+.kpi-null{border-inline-start:3px solid var(--line);padding:2px 15px;margin:0 0 18px}
+.kpi-null b{display:block;font-size:14px;margin-bottom:6px}
+.kpi-null p{font-size:14px;line-height:1.8;color:var(--muted);margin:0 0 8px}
+.table-cap{font-size:12px;color:var(--muted);margin:16px 0 7px;line-height:1.7}
+.semantic-table td:last-child{font-size:12px;color:var(--muted);white-space:nowrap}
+.nested-example{margin:16px 0 10px}
+.nested-example>summary{font-size:14px}
+@media(max-width:520px){
+ .kpi-card{padding:15px}
+ .kpi-side{min-width:0;flex:1 1 0;padding:11px 9px}
+ .kpi-plain{font-size:15px}
+ .semantic-table td:last-child{white-space:normal}
+}

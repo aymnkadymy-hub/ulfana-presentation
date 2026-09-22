@@ -1,153 +1,234 @@
 {
-  "status": "complete",
-  "review_date": "2026-09-20",
-  "model": "gemma3:4b",
-  "reviewer": "Codex assistant; direct manual reading, not independent human or blinded review",
-  "reviewed_responses": 408,
-  "rubric": {
-    "C": "جواب مكتمل متوافق مع المصدر وشرح سليم في جوهره.",
-    "P": "صحة جزئية، أو جزء مطلوب مفقود، أو إضافة خاطئة مؤثرة.",
-    "W": "جواب أساسي خاطئ أو عدم إجابة.",
-    "U": "سؤال ملتبس أو مصدر معيب؛ مستبعد من الطرفين."
+ "status": "complete",
+ "review_date": "2026-09-20",
+ "model": "gemma3:4b",
+ "reviewer": "Codex assistant; direct manual reading, not independent human or blinded review",
+ "reviewed_responses": 408,
+ "rubric": {
+  "C": "جواب مكتمل متوافق مع المصدر وشرح سليم في جوهره.",
+  "P": "صحة جزئية، أو جزء مطلوب مفقود، أو إضافة خاطئة مؤثرة.",
+  "W": "جواب أساسي خاطئ أو عدم إجابة.",
+  "U": "سؤال ملتبس أو مصدر معيب؛ مستبعد من الطرفين."
+ },
+ "groups": [
+  {
+   "id": "ai",
+   "label": "أسئلة البحث في الذكاء الاصطناعي",
+   "total": 100,
+   "eligible": 95,
+   "alone": {
+    "complete": 47,
+    "partial": 18,
+    "wrong_or_no_answer": 30,
+    "excluded": 5
+   },
+   "rag": {
+    "complete": 58,
+    "partial": 24,
+    "wrong_or_no_answer": 13,
+    "excluded": 5
+   }
   },
-  "groups": [
-    {
-      "id": "ai",
-      "label": "أسئلة البحث في الذكاء الاصطناعي",
-      "total": 100,
-      "eligible": 95,
-      "alone": {
-        "complete": 47,
-        "partial": 18,
-        "wrong_or_no_answer": 30,
-        "excluded": 5
-      },
-      "rag": {
-        "complete": 58,
-        "partial": 24,
-        "wrong_or_no_answer": 13,
-        "excluded": 5
-      }
-    },
-    {
-      "id": "ar",
-      "label": "أسئلة ملف المهارات",
-      "total": 30,
-      "eligible": 30,
-      "alone": {
-        "complete": 24,
-        "partial": 3,
-        "wrong_or_no_answer": 3,
-        "excluded": 0
-      },
-      "rag": {
-        "complete": 20,
-        "partial": 9,
-        "wrong_or_no_answer": 1,
-        "excluded": 0
-      }
-    },
-    {
-      "id": "source-ar",
-      "label": "إعادة صياغة أسئلة المهارات باسم الملف",
-      "total": 30,
-      "eligible": 30,
-      "alone": {
-        "complete": 22,
-        "partial": 3,
-        "wrong_or_no_answer": 5,
-        "excluded": 0
-      },
-      "rag": {
-        "complete": 16,
-        "partial": 7,
-        "wrong_or_no_answer": 7,
-        "excluded": 0
-      }
-    },
-    {
-      "id": "no",
-      "label": "معلومات غير موجودة — امتناع صحيح",
-      "total": 20,
-      "eligible": 20,
-      "alone": {
-        "complete": 20,
-        "partial": 0,
-        "wrong_or_no_answer": 0,
-        "excluded": 0
-      },
-      "rag": {
-        "complete": 19,
-        "partial": 0,
-        "wrong_or_no_answer": 1,
-        "excluded": 0
-      }
-    }
-  ],
-  "base_answer_quality": {
-    "total": 125,
-    "alone": {
-      "complete": 71,
-      "partial": 21,
-      "wrong_or_no_answer": 33,
-      "excluded": 5
-    },
-    "rag": {
-      "complete": 78,
-      "partial": 33,
-      "wrong_or_no_answer": 14,
-      "excluded": 5
-    }
+  {
+   "id": "ar",
+   "label": "أسئلة ملف المهارات",
+   "total": 30,
+   "eligible": 30,
+   "alone": {
+    "complete": 24,
+    "partial": 3,
+    "wrong_or_no_answer": 3,
+    "excluded": 0
+   },
+   "rag": {
+    "complete": 20,
+    "partial": 9,
+    "wrong_or_no_answer": 1,
+    "excluded": 0
+   }
   },
-  "conversation": {
-    "prompts": 24,
-    "conversations": 8,
-    "responses": 48,
-    "alone": {
-      "complete": 8,
-      "partial": 11,
-      "wrong_or_no_answer": 5,
-      "excluded": 0
-    },
-    "rag": {
-      "complete": 9,
-      "partial": 9,
-      "wrong_or_no_answer": 6,
-      "excluded": 0
-    },
-    "book_returned": 18,
-    "web_used": 4,
-    "complete_with_fully_supporting_passage": 6
+  {
+   "id": "source-ar",
+   "label": "إعادة صياغة أسئلة المهارات باسم الملف",
+   "total": 30,
+   "eligible": 30,
+   "alone": {
+    "complete": 22,
+    "partial": 3,
+    "wrong_or_no_answer": 5,
+    "excluded": 0
+   },
+   "rag": {
+    "complete": 16,
+    "partial": 7,
+    "wrong_or_no_answer": 7,
+    "excluded": 0
+   }
   },
-  "book_attribution": {
-    "returned": 23,
-    "full_page_supports_core": 9,
-    "saved_snippet_supports_core": 8,
-    "unsupported_page": 14,
-    "scope": "130 original answerable prompts, 23 book-returning replies. Main answer support is distinct from correctness of every added claim."
-  },
-  "method": [
-    "قراءة 360 جوابًا محفوظًا، ثم 48 جوابًا جديدًا في 8 محادثات من ثلاث رسائل لكل طرف.",
-    "تقييم معنى الجواب واكتماله وشرحه بمقارنة النص الفعلي من المصدر؛ الحرف الصحيح أو الصفحة الصحيحة وحدهما لا يكفيان.",
-    "24 سؤال محادثة مفتوحًا بلا اختيارات، مع مرجع مطلوب محدد قبل التشغيل؛ كل طرف يحتفظ بسياق أجوبته السابقة.",
-    "أسئلة الحوار تشمل الأجيال والتصنيفات والذاكرة والوحدات والحاسبات الصغيرة والتخزين والبرامج والملفات.",
-    "النموذج المجرد بلا الملف. أولفانا تستخدم المسار الحي بكتب المستخدم وقد تستخدم الويب أو معالجة مباشرة. المقارنة للنظام الكامل، وليست عزلًا سببيًا لـRAG.",
-    "يُفصل دعم المقطع المسترجع عن صحة محتوى الجواب. لا تُحسب إجابة من المعرفة العامة إسنادًا موثقًا للكتاب."
-  ],
-  "limitations": [
-    "عينة استكشافية محلية بنموذج واحد، مراجِع آلي واحد غير معمى؛ لا تمثل دقة عامة أو دراسة مستقلة.",
-    "الأسئلة الثلاثون المعاد صياغتها ليست أسئلة مستقلة جديدة، ورسائل المحادثة مترابطة. لا تدمج النسب بينها.",
-    "استُبعدت خمسة أسئلة AI ذات افتراضات ناقصة أو صياغة/استخراج ملتبس من الطرفين؛ القائمة منشورة مع الدرجات.",
-    "تقييم الوفاء بالمصدر لا يصحح خطأ المصدر نفسه؛ مثال تعريف DPI في ملف المهارات.",
-    "المقاطع الكاملة لجميع مراتب الاسترجاع غير محفوظة؛ لا تُستنتج recall أو دقة الاسترجاع الشاملة من هذه السجلات.",
-    "المحادثات ليست دليلًا على تفوق شامل؛ المثال المعروض حالة نجاح محددة، وجميع درجات العينة متاحة."
-  ],
-  "example": {
-    "case": "chat-minicomputers-1",
-    "question": "متى ظهرت الحاسبات الصغيرة، وهل كانت عامة الاستخدام منذ البداية؟",
-    "alone_summary": "ذكر عام 1977، وربط البداية بتطوير البرمجيات.",
-    "library_summary": "ذكر مطلع الستينيات، وشرح انتقالها من التخصص إلى الاستخدامات العامة.",
-    "source": "ملف المهارات، ص 5",
-    "judgment": "الأول يخالف النص؛ الثاني يطابقه ويستند إلى فقرة مسترجعة داعمة. ملخص تحريري للأجوبة، لا اقتباس حرفي."
+  {
+   "id": "no",
+   "label": "معلومات غير موجودة — امتناع صحيح",
+   "total": 20,
+   "eligible": 20,
+   "alone": {
+    "complete": 20,
+    "partial": 0,
+    "wrong_or_no_answer": 0,
+    "excluded": 0
+   },
+   "rag": {
+    "complete": 19,
+    "partial": 0,
+    "wrong_or_no_answer": 1,
+    "excluded": 0
+   }
   }
+ ],
+ "base_answer_quality": {
+  "total": 125,
+  "alone": {
+   "complete": 71,
+   "partial": 21,
+   "wrong_or_no_answer": 33,
+   "excluded": 5
+  },
+  "rag": {
+   "complete": 78,
+   "partial": 33,
+   "wrong_or_no_answer": 14,
+   "excluded": 5
+  }
+ },
+ "conversation": {
+  "prompts": 24,
+  "conversations": 8,
+  "responses": 48,
+  "alone": {
+   "complete": 8,
+   "partial": 11,
+   "wrong_or_no_answer": 5,
+   "excluded": 0
+  },
+  "rag": {
+   "complete": 9,
+   "partial": 9,
+   "wrong_or_no_answer": 6,
+   "excluded": 0
+  },
+  "book_returned": 18,
+  "web_used": 4,
+  "complete_with_fully_supporting_passage": 6
+ },
+ "book_attribution": {
+  "returned": 23,
+  "full_page_supports_core": 9,
+  "saved_snippet_supports_core": 8,
+  "unsupported_page": 14,
+  "scope": "130 original answerable prompts, 23 book-returning replies. Main answer support is distinct from correctness of every added claim."
+ },
+ "method": [
+  "قراءة 360 جوابًا محفوظًا، ثم 48 جوابًا جديدًا في 8 محادثات من ثلاث رسائل لكل طرف.",
+  "تقييم معنى الجواب واكتماله وشرحه بمقارنة النص الفعلي من المصدر؛ الحرف الصحيح أو الصفحة الصحيحة وحدهما لا يكفيان.",
+  "24 سؤال محادثة مفتوحًا بلا اختيارات، مع مرجع مطلوب محدد قبل التشغيل؛ كل طرف يحتفظ بسياق أجوبته السابقة.",
+  "أسئلة الحوار تشمل الأجيال والتصنيفات والذاكرة والوحدات والحاسبات الصغيرة والتخزين والبرامج والملفات.",
+  "النموذج المجرد بلا الملف. أولفانا تستخدم المسار الحي بكتب المستخدم وقد تستخدم الويب أو معالجة مباشرة. المقارنة للنظام الكامل، وليست عزلًا سببيًا لـRAG.",
+  "يُفصل دعم المقطع المسترجع عن صحة محتوى الجواب. لا تُحسب إجابة من المعرفة العامة إسنادًا موثقًا للكتاب."
+ ],
+ "limitations": [
+  "عينة استكشافية محلية بنموذج واحد، مراجِع آلي واحد غير معمى؛ لا تمثل دقة عامة أو دراسة مستقلة.",
+  "الأسئلة الثلاثون المعاد صياغتها ليست أسئلة مستقلة جديدة، ورسائل المحادثة مترابطة. لا تدمج النسب بينها.",
+  "استُبعدت خمسة أسئلة AI ذات افتراضات ناقصة أو صياغة/استخراج ملتبس من الطرفين؛ القائمة منشورة مع الدرجات.",
+  "تقييم الوفاء بالمصدر لا يصحح خطأ المصدر نفسه؛ مثال تعريف DPI في ملف المهارات.",
+  "المقاطع الكاملة لجميع مراتب الاسترجاع غير محفوظة؛ لا تُستنتج recall أو دقة الاسترجاع الشاملة من هذه السجلات.",
+  "المحادثات ليست دليلًا على تفوق شامل؛ المثال المعروض حالة نجاح محددة، وجميع درجات العينة متاحة.",
+  "اكتمال الجواب لم يتحرك بفارق دالّ (p=0.39). الفرق الدالّ الوحيد هو انخفاض الأجوبة الخاطئة (p<0.001). لا تُقرأ الأرقام الإجمالية دون هذا التمييز."
+ ],
+ "example": {
+  "case": "chat-minicomputers-1",
+  "question": "متى ظهرت الحاسبات الصغيرة، وهل كانت عامة الاستخدام منذ البداية؟",
+  "alone_summary": "ذكر عام 1977، وربط البداية بتطوير البرمجيات.",
+  "library_summary": "ذكر مطلع الستينيات، وشرح انتقالها من التخصص إلى الاستخدامات العامة.",
+  "source": "ملف المهارات، ص 5",
+  "judgment": "الأول يخالف النص؛ الثاني يطابقه ويستند إلى فقرة مسترجعة داعمة. ملخص تحريري للأجوبة، لا اقتباس حرفي."
+ },
+ "paired_tests": {
+  "test": "McNemar exact (two-sided), same question in both arms — الصيغة نفسها في benchmark/paired_compare.py",
+  "computed_on": "2026-09-23",
+  "note": "يُحسب على الأسئلة المقترنة وحدها؛ الأسئلة التي اتفق فيها الطرفان لا تحمل معلومة.",
+  "complete_answer": {
+   "scope": "الأسئلة الأصلية للملفين (125 سؤالًا)، معيار «جواب مكتمل C»",
+   "alone": 71,
+   "rag": 78,
+   "n": 125,
+   "ulfana_better": 28,
+   "ulfana_worse": 21,
+   "tied": 76,
+   "p_value": 0.3916,
+   "verdict": "لا فرق يُعتد به"
+  },
+  "wrong_answer": {
+   "scope": "الأسئلة نفسها، معيار «جواب خاطئ أو لا جواب W» — الأقل أفضل",
+   "alone": 33,
+   "rag": 14,
+   "n": 125,
+   "ulfana_better": 24,
+   "ulfana_worse": 5,
+   "tied": 96,
+   "p_value": 0.0005,
+   "verdict": "فرق دالّ لصالح أولفانا"
+  },
+  "conversations": {
+   "scope": "24 رسالة في 8 محادثات، معيار «جواب مكتمل C»",
+   "alone": 8,
+   "rag": 9,
+   "n": 24,
+   "ulfana_better": 3,
+   "ulfana_worse": 2,
+   "tied": 19,
+   "p_value": 1.0,
+   "verdict": "العينة أصغر من أن تُظهر فرقًا"
+  },
+  "by_group": {
+   "ai": {
+    "label": "أسئلة البحث في الذكاء الاصطناعي",
+    "alone": 47,
+    "rag": 58,
+    "n": 95,
+    "ulfana_better": 23,
+    "ulfana_worse": 12,
+    "tied": 60,
+    "p_value": 0.0895
+   },
+   "ar": {
+    "label": "أسئلة ملف المهارات",
+    "alone": 24,
+    "rag": 20,
+    "n": 30,
+    "ulfana_better": 5,
+    "ulfana_worse": 9,
+    "tied": 16,
+    "p_value": 0.424
+   },
+   "source-ar": {
+    "label": "إعادة صياغة أسئلة المهارات",
+    "alone": 22,
+    "rag": 16,
+    "n": 30,
+    "ulfana_better": 2,
+    "ulfana_worse": 8,
+    "tied": 20,
+    "p_value": 0.1094
+   },
+   "no": {
+    "label": "أسئلة بلا جواب في المصدر",
+    "alone": 20,
+    "rag": 19,
+    "n": 20,
+    "ulfana_better": 0,
+    "ulfana_worse": 1,
+    "tied": 19,
+    "p_value": 1.0
+   }
+  }
+ }
 }
