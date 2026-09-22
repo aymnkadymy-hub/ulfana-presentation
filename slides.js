@@ -50,6 +50,7 @@ async function loadEvidence(){if(evidenceLoaded)return;
  if(semantic.status==='fulfilled'){
   const d=semantic.value,t=d.paired_tests,box=$('#semantic-results');box.replaceChildren();
   const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;};
+  const pv=v=>v<0.001?'p < 0.001':`p = ${v.toFixed(2)}`;
   // Lead with the finding that survives a paired test, not the bigger-looking one.
   const kpi=el('div','kpi-card');
   kpi.append(el('span','kpi-label','الأجوبة الخاطئة أو الممتنعة — من 125 سؤالًا'));
@@ -62,13 +63,13 @@ async function loadEvidence(){if(evidenceLoaded)return;
   }
   kpi.append(pair);
   kpi.append(el('p','kpi-plain','بعبارة بسيطة: النموذج وحده أخطأ في نحو سؤال من كل أربعة. ومع ملف الطالب نفسه، أخطأ في نحو سؤال من كل تسعة.'));
-  kpi.append(el('small','kpi-stat',`فرق حقيقي لا صدفة: تحسّن في ${t.wrong_answer.ulfana_better} سؤالًا وتراجع في ${t.wrong_answer.ulfana_worse}، على الأسئلة نفسها · اختبار McNemar، p=${t.wrong_answer.p_value}`));
+  kpi.append(el('small','kpi-stat',`فرق حقيقي لا صدفة: تحسّن في ${t.wrong_answer.ulfana_better} سؤالًا وتراجع في ${t.wrong_answer.ulfana_worse}، على الأسئلة نفسها · اختبار McNemar، ${pv(t.wrong_answer.p_value)}`));
   box.append(kpi);
   // Publishing our own null result is what makes the one above credible.
   const nul=el('div','kpi-null');
   nul.append(el('b',null,'وما لم يتحسّن:'));
-  nul.append(el('p',null,`اكتمال الجواب وجودة شرحه بقيا كما هما عمليًا: ${t.complete_answer.alone} مقابل ${t.complete_answer.rag} من ${t.complete_answer.n}. الفرق داخل حدود الصدفة (p=${t.complete_answer.p_value})، فلا ندّعي تحسّنًا فيه.`));
-  nul.append(el('p',null,`وفي المحادثات المترابطة: ${t.conversations.alone} مقابل ${t.conversations.rag} من ${t.conversations.n} — عيّنة أصغر من أن تحسم اتجاهًا (p=${t.conversations.p_value}).`));
+  nul.append(el('p',null,`اكتمال الجواب وجودة شرحه بقيا كما هما عمليًا: ${t.complete_answer.alone} مقابل ${t.complete_answer.rag} من ${t.complete_answer.n}. الفرق داخل حدود الصدفة (${pv(t.complete_answer.p_value)})، فلا ندّعي تحسّنًا فيه.`));
+  nul.append(el('p',null,`وفي المحادثات المترابطة: ${t.conversations.alone} مقابل ${t.conversations.rag} من ${t.conversations.n} — عيّنة أصغر من أن تحسم اتجاهًا (${pv(t.conversations.p_value)}).`));
   box.append(nul);
   const table=el('table','result-table semantic-table');
   table.innerHTML='<thead><tr><th>المجموعة</th><th>وحده</th><th>أولفانا</th><th>الدلالة</th></tr></thead>';
@@ -76,7 +77,7 @@ async function loadEvidence(){if(evidenceLoaded)return;
   for(const g of d.groups){
    const k=t.by_group[g.id],tr=el('tr');
    for(const v of [g.label,`${g.alone.complete}/${g.eligible}`,`${g.rag.complete}/${g.eligible}`,
-                   k?(k.p_value<0.05?`p=${k.p_value}`:'بلا فرق دالّ'):'—'])tr.append(el('td',null,v));
+                   k?(k.p_value<0.05?pv(k.p_value):'بلا فرق دالّ'):'—'])tr.append(el('td',null,v));
    body.append(tr);
   }
   table.append(body);box.append(el('p','table-cap','اكتمال الجواب لكل مجموعة. لا مجموعة منها تُظهر فرقًا دالًّا في أي اتجاه — بما فيها المجموعتان اللتان يبدو فيها النموذج وحده أعلى.'));box.append(table);

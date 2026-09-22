@@ -24,7 +24,7 @@ function wink(s,poke=false){if(!visible(s)||!s.state)return;s.state.classList.re
 async function mount(s){
  const match=s.img.getAttribute('src')?.match(/\/([a-z]+)\.svg/);if(!match||!traits[match[1]])return;
  const id=match[1],ticket=++s.ticket;if(s.id!==id){reset(s);s.state?.remove();s.state=null;s.eyes=null;s.host.classList.remove('live-ready');}s.id=id;s.host.setAttribute('aria-label',`${s.img.alt} — المس أو اضغط ليتفاعل`);
- if(!cache.has(id))cache.set(id,fetch(`assets/companions/${id}-live.svg?v=phone-v2`).then(r=>{if(!r.ok)throw Error('Companion unavailable');return r.text();}).catch(e=>{cache.delete(id);throw e;}));
+ if(!cache.has(id))cache.set(id,fetch(`assets/companions/${id}-live.svg?v=phone-v3`).then(r=>{if(!r.ok)throw Error('Companion unavailable');return r.text();}).catch(e=>{cache.delete(id);throw e;}));
  try{
   const source=await cache.get(id);if(ticket!==s.ticket)return;
   const doc=new DOMParser().parseFromString(source,'image/svg+xml'),svg=doc.documentElement;
