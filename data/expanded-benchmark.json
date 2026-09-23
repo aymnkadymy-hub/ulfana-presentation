@@ -156,5 +156,60 @@
     "scoring": "reference option match + documented assistant semantic exceptions; assistant-reviewed abstention",
     "superseded_question": "ai091, both arms, repaired h(A) / option (A) parsing",
     "raw_materials": "Retained locally; not published to protect account data and document copyright."
+  },
+  "paired_tests": {
+    "test": "McNemar exact (two-sided), same formula as benchmark/paired_compare.py",
+    "computed_on": "2026-09-23",
+    "answerable_mcq": {
+      "n": 130,
+      "alone": 95,
+      "rag": 115,
+      "ulfana_better": 25,
+      "ulfana_worse": 5,
+      "p_value": 0.0003,
+      "better_via_books": 3,
+      "better_via_web": 20
+    },
+    "ai_search": {
+      "n": 100,
+      "alone": 68,
+      "rag": 87,
+      "ulfana_better": 22,
+      "ulfana_worse": 3,
+      "p_value": 0.0002,
+      "better_via_books": 3,
+      "better_via_web": 19
+    },
+    "computer_skills": {
+      "n": 30,
+      "alone": 27,
+      "rag": 28,
+      "ulfana_better": 3,
+      "ulfana_worse": 2,
+      "p_value": 1,
+      "better_via_books": 0,
+      "better_via_web": 1
+    },
+    "missing_information": {
+      "n": 20,
+      "alone": 20,
+      "rag": 19,
+      "ulfana_better": 0,
+      "ulfana_worse": 1,
+      "p_value": 1,
+      "better_via_books": 0,
+      "better_via_web": 0
+    },
+    "computer_skills_source_bound": {
+      "n": 30,
+      "alone": 25,
+      "rag": 22,
+      "ulfana_better": 2,
+      "ulfana_worse": 5,
+      "p_value": 0.4531,
+      "better_via_books": 0,
+      "better_via_web": 0
+    },
+    "note": "better_via_* تعدّ المكاسب حسب بيانات الإسناد في مسار أولفانا. في 30 سؤالًا مقيدًا بالكتاب لم تُسجَّل إحالة إلى الكتاب في أي جواب (from_books=false للجميع)."
   }
 }

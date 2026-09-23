@@ -257,6 +257,17 @@ def reconcile_expanded() -> None:
             rows = [g for g in grades if g['domain'] in ['ai_search','computer_skills'] and g['arm'] == arm]
             if d['answerable_aggregate'][arm] != {'correct':sum(g['correct'] for g in rows),'total':len(rows)}:
                 fail(ep, 'answerable aggregate disagrees with grades')
+        # The dialog quotes these paired counts; recompute them from the grades.
+        paired = d['paired_tests']
+        for key, domains in [('answerable_mcq',['ai_search','computer_skills']),('computer_skills_source_bound',['computer_skills_source_bound'])]:
+            pairs = {}
+            for g in grades:
+                if g['domain'] in domains:
+                    pairs.setdefault(g['id'],{})[g['arm']] = g['correct']
+            better = sum(v['rag'] and not v['alone'] for v in pairs.values())
+            worse = sum(v['alone'] and not v['rag'] for v in pairs.values())
+            if (paired[key]['ulfana_better'], paired[key]['ulfana_worse']) != (better, worse):
+                fail(ep, f'paired test {key} disagrees with grades')
         historical=json.loads((SITE/'data'/'historical-benchmarks.json').read_text())['fusion_ablation.json']
         if historical['arms']['full']['at1'] != 41 or historical['arms']['fused']['at1'] != 26 or historical['sample'] != 67:
             fail(ep, 'retrieval slide disagrees with historical evidence')

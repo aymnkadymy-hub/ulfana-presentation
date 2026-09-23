@@ -547,5 +547,160 @@
       }
     ],
     "scope": "Local evaluation on 150 base questions plus 30 source-bound rephrasings. Not production student outcomes."
-  }
+  },
+  "measured_kpis": [
+    {
+      "id": "retrieval_rank1",
+      "kpi": "retrieval_recall_at_5",
+      "label": "المصدر الصحيح في المركز الأول",
+      "status": "measured",
+      "date": "2026-09-23",
+      "numerator": 41,
+      "denominator": 67,
+      "value": 61.2,
+      "unit": "%",
+      "comparison": {
+        "without_reranker": 26,
+        "better": 18,
+        "worse": 3,
+        "p_value": 0.0015
+      },
+      "source": "data/fusion-ablation-2026-09-23.json",
+      "limitations": [
+        "ترتيب المصدر لا صحة الجواب",
+        "67 سؤالًا ثابتًا على كتب المكتبة"
+      ]
+    },
+    {
+      "id": "retrieval_in_context_at_8",
+      "kpi": "retrieval_recall_at_5",
+      "label": "المصدر الصحيح ضمن المقاطع الثمانية التي يقرؤها النموذج",
+      "status": "measured",
+      "date": "2026-09-23",
+      "numerator": 52,
+      "denominator": 67,
+      "value": 77.6,
+      "unit": "%",
+      "comparison": {
+        "without_reranker": 52,
+        "better": 7,
+        "worse": 7,
+        "p_value": 1.0
+      },
+      "source": "data/fusion-ablation-2026-09-23.json",
+      "limitations": [
+        "RAG_K=8 في الإعداد الحي",
+        "إعادة الترتيب لا تغيّر هذا الرقم؛ عند @5 كان 49 مع إعادة الترتيب و47 بدونها"
+      ]
+    },
+    {
+      "id": "answer_correctness_mcq",
+      "kpi": "answer_correctness",
+      "label": "صحة جواب الاختيار",
+      "status": "measured",
+      "date": "2026-09-19",
+      "numerator": 115,
+      "denominator": 130,
+      "value": 88.5,
+      "unit": "%",
+      "comparison": {
+        "model_alone": 95,
+        "better": 25,
+        "worse": 5,
+        "p_value": 0.0003,
+        "better_via_web": 20,
+        "better_via_books": 3
+      },
+      "source": "data/expanded-benchmark.json",
+      "limitations": [
+        "المنظومة كاملة (كتب وويب)، لا المكتبة وحدها",
+        "بنك الخوارزميات مرفوع مع مفتاحه",
+        "النموذج gemma3:4b"
+      ]
+    },
+    {
+      "id": "wrong_answers_open",
+      "kpi": "answer_correctness",
+      "label": "أجوبة خاطئة أو بلا جواب في الأسئلة المفتوحة",
+      "status": "measured",
+      "date": "2026-09-23",
+      "numerator": 14,
+      "denominator": 125,
+      "value": 11.2,
+      "unit": "%",
+      "direction": "lower",
+      "comparison": {
+        "model_alone": 33,
+        "better": 24,
+        "worse": 5,
+        "p_value": 0.0005
+      },
+      "source": "data/semantic-review.json",
+      "limitations": [
+        "مراجعة المساعد، غير معماة",
+        "اكتمال الجواب لم يتحسّن بفرق دالّ (71 مقابل 78، p = 0.39)"
+      ]
+    },
+    {
+      "id": "source_bound_book_use",
+      "kpi": "citation_support_precision",
+      "label": "وصول الكتاب إلى الجواب حين يطلبه السائل صراحةً",
+      "status": "measured",
+      "date": "2026-09-19",
+      "numerator": 0,
+      "denominator": 30,
+      "value": 0.0,
+      "unit": "%",
+      "comparison": {
+        "correct_with_ulfana": 22,
+        "correct_model_alone": 25,
+        "better": 2,
+        "worse": 5,
+        "p_value": 0.4531
+      },
+      "source": "data/expanded-grades.json",
+      "limitations": [
+        "إعادة صياغة للأسئلة العربية الثلاثين نفسها",
+        "لم يُعَد القياس بعد"
+      ]
+    },
+    {
+      "id": "abstention_recall",
+      "kpi": "abstention_recall",
+      "label": "الامتناع عند غياب المعلومة",
+      "status": "measured",
+      "date": "2026-09-19",
+      "numerator": 19,
+      "denominator": 20,
+      "value": 95.0,
+      "unit": "%",
+      "comparison": {
+        "model_alone": 20
+      },
+      "source": "data/expanded-benchmark.json",
+      "limitations": [
+        "20 سؤالًا فقط",
+        "الحالة الخاسرة اخترعت رقم إصدار قبل أن تقول إن المعلومة غير متاحة"
+      ]
+    },
+    {
+      "id": "answer_latency_p50",
+      "kpi": "answer_latency",
+      "label": "زمن الجواب الوسيط",
+      "status": "measured",
+      "date": "2026-09-19",
+      "value": 8.2,
+      "unit": "ثانية",
+      "range": "8.2 إلى 10.7 حسب المجموعة، P95 حتى 16.2",
+      "comparison": {
+        "model_alone_seconds": 1.6
+      },
+      "source": "data/expanded-benchmark.json",
+      "limitations": [
+        "جهاز واحد وطلبات متتالية، لا تحت الحمل",
+        "كلفة حقيقية: أبطأ بنحو خمس مرات من النموذج وحده"
+      ]
+    }
+  ],
+  "measured_note": "قياسات فعلية تُقرأ مع حدودها؛ كل رقم يُعرض مع مقارنته المقترنة، بما في ذلك ما لم يتحسّن."
 }

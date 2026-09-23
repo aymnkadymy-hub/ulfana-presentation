@@ -38,7 +38,7 @@ async function loadEvidence(){if(evidenceLoaded)return;
  if(expanded.status==='fulfilled'){
   const d=expanded.value, box=$('#expanded-results');box.replaceChildren();
   const p=document.createElement('p');p.textContent=d.description;box.append(p);
-  const table=document.createElement('table');table.className='result-table';table.innerHTML='<thead><tr><th>المجموعة</th><th>Gemma 3 4B وحده</th><th>مع المكتبة</th></tr></thead>';const tbody=document.createElement('tbody');
+  const table=document.createElement('table');table.className='result-table';table.innerHTML='<thead><tr><th>المجموعة</th><th>Gemma 3 4B وحده</th><th>مع أولفانا</th></tr></thead>';const tbody=document.createElement('tbody');
   for(const g of d.groups){const tr=document.createElement('tr');for(const txt of [g.label,`${g.alone.correct} / ${g.total}`,`${g.rag.correct} / ${g.total}`]){const td=document.createElement('td');td.textContent=txt;tr.append(td);}tbody.append(tr);}table.append(tbody);box.append(table);
   for(const text of d.notes){const p=document.createElement('p');p.textContent=text;box.append(p);}
  }else{$('#expanded-results').textContent='تعذّر تحميل النتائج. يمكنك فتح ملف النتائج عبر الرابط أدناه.';}
@@ -53,7 +53,7 @@ async function loadEvidence(){if(evidenceLoaded)return;
   const pv=v=>v<0.001?'p < 0.001':`p = ${v.toFixed(2)}`;
   // Lead with the finding that survives a paired test, not the bigger-looking one.
   const kpi=el('div','kpi-card');
-  kpi.append(el('span','kpi-label','الأجوبة الخاطئة أو الممتنعة — من 125 سؤالًا'));
+  kpi.append(el('span','kpi-label','الأجوبة الخاطئة أو الممتنعة من 125 سؤالًا'));
   const pair=el('div','kpi-pair');
   for(const [arm,label] of [['alone','النموذج وحده'],['rag','مع أولفانا']]){
    const side=el('div','kpi-side'+(arm==='rag'?' kpi-good':''));
@@ -69,7 +69,7 @@ async function loadEvidence(){if(evidenceLoaded)return;
   const nul=el('div','kpi-null');
   nul.append(el('b',null,'وما لم يتحسّن:'));
   nul.append(el('p',null,`اكتمال الجواب وجودة شرحه بقيا كما هما عمليًا: ${t.complete_answer.alone} مقابل ${t.complete_answer.rag} من ${t.complete_answer.n}. الفرق داخل حدود الصدفة (${pv(t.complete_answer.p_value)})، فلا ندّعي تحسّنًا فيه.`));
-  nul.append(el('p',null,`وفي المحادثات المترابطة: ${t.conversations.alone} مقابل ${t.conversations.rag} من ${t.conversations.n} — عيّنة أصغر من أن تحسم اتجاهًا (${pv(t.conversations.p_value)}).`));
+  nul.append(el('p',null,`وفي المحادثات المترابطة: ${t.conversations.alone} مقابل ${t.conversations.rag} من ${t.conversations.n}، عيّنة أصغر من أن تحسم اتجاهًا (${pv(t.conversations.p_value)}).`));
   box.append(nul);
   const table=el('table','result-table semantic-table');
   table.innerHTML='<thead><tr><th>المجموعة</th><th>وحده</th><th>أولفانا</th><th>الدلالة</th></tr></thead>';
@@ -77,10 +77,10 @@ async function loadEvidence(){if(evidenceLoaded)return;
   for(const g of d.groups){
    const k=t.by_group[g.id],tr=el('tr');
    for(const v of [g.label,`${g.alone.complete}/${g.eligible}`,`${g.rag.complete}/${g.eligible}`,
-                   k?(k.p_value<0.05?pv(k.p_value):'بلا فرق دالّ'):'—'])tr.append(el('td',null,v));
+                   k?(k.p_value<0.05?pv(k.p_value):'بلا فرق دالّ'):'غير مختبر'])tr.append(el('td',null,v));
    body.append(tr);
   }
-  table.append(body);box.append(el('p','table-cap','اكتمال الجواب لكل مجموعة. لا مجموعة منها تُظهر فرقًا دالًّا في أي اتجاه — بما فيها المجموعتان اللتان يبدو فيها النموذج وحده أعلى.'));box.append(table);
+  table.append(body);box.append(el('p','table-cap','اكتمال الجواب لكل مجموعة. لا مجموعة منها تُظهر فرقًا دالًّا في أي اتجاه، بما فيها المجموعتان اللتان يبدو فيها النموذج وحده أعلى.'));box.append(table);
   box.append(el('p','review-note','مراجعة مباشرة أجراها المساعد، غير معماة، بنموذج واحد محليًا. أسئلة إعادة الصياغة ورسائل المتابعة ليست عينات مستقلة. إسناد الجواب للمصدر يُراجع منفصلًا عن صحة معناه. المقارنة للنظام الكامل ولا تعزل أثر الاسترجاع وحده.'));
  }else{$('#semantic-results').textContent='يمكنك تنزيل المراجعة من الرابط أدناه.';}
  evidenceLoaded=expanded.status==='fulfilled'&&historic.status==='fulfilled'&&semantic.status==='fulfilled';
