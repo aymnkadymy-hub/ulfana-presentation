@@ -1,0 +1,913 @@
+{
+  "status": "complete",
+  "date": "2026-09-23",
+  "model": "gemma3:4b",
+  "title": "المكتبة الناطقة مع gemma3:4b مقابل gemma3:4b وحده",
+  "question_sets": [
+    "benchmark/eval_set.json (67)",
+    "benchmark/eval_set.ar-clean.json (40)"
+  ],
+  "sample": {
+    "questions": 107,
+    "arabic": 60,
+    "english": 47
+  },
+  "grades": {
+    "C": "صحيح ومكتمل وفق المقطع المرجعي",
+    "P": "صحيح جزئيًا",
+    "W": "خاطئ أو مختلق",
+    "X": "امتناع",
+    "U": "رقم لا يمكن التحقق منه في الكتاب؛ لا يُعدّ صحيحًا"
+  },
+  "results": {
+    "library": {
+      "correct": 76,
+      "wrong": 12,
+      "total": 107
+    },
+    "model_alone": {
+      "correct": 21,
+      "wrong": 32,
+      "total": 107
+    },
+    "paired": {
+      "test": "McNemar exact (two-sided)",
+      "library_better": 57,
+      "library_worse": 2,
+      "p_value": 6.14e-15
+    },
+    "median_seconds": {
+      "library": 3.9,
+      "model_alone": 2.3
+    }
+  },
+  "method": [
+    "الأسئلة مولّدة من مقاطع حقيقية في كتب رفعها مستخدمون إلى المكتبة، وكل سؤال مرتبط بكتاب وصفحة ومقطع مرجعي.",
+    "ذراع المكتبة: أداة المشروع benchmark/frozen_eval.py على نسخة من المخزن بإعداد الخادم الحي: السياق ومحفز النظام وقواعد الإسناد نفسها. الذراع المجرد: النموذج نفسه عبر Ollama مباشرة بالإعدادات نفسها.",
+    "قُدّرت الأجوبة يدويًا مقابل المقطع المرجعي بعد حذف سطور الإسناد وخلط ترتيب الذراعين؛ مفتاح الخلط لم يُفتح إلا بعد انتهاء التقدير. سُجّلت خطة القياس وقاعدة القرار قبل التشغيل."
+  ],
+  "limitations": [
+    "المقدِّر هو المساعد Claude، لا لجنة بشرية مستقلة. العمى جزئي: بعض أجوبة المكتبة تقول صراحةً إنها من الكتب أو من خارجها.",
+    "الأسئلة من كتب في المكتبة، والنموذج وحده لا يملك هذه الكتب؛ هذا ما يقيسه الاختبار تحديدًا، ولا يعمَّم على أسئلة المعرفة العامة.",
+    "في 10 أسئلة لم يُسترجع لها مقطع من الكتب (ويب أو لا شيء) تساوى الذراعان في الصحيح (2 مقابل 2)، وأخطأت المكتبة أكثر (5 مقابل 1).",
+    "الزمن هنا لتوليد الجواب بعد التقاط الأدلة، على جهاز واحد؛ لا يشمل زمن الاسترجاع والبحث."
+  ],
+  "per_question": [
+    {
+      "id": "en000",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en001",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "en002",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "en003",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "en004",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "none",
+      "library": "X",
+      "model_alone": "X"
+    },
+    {
+      "id": "en005",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "W",
+      "model_alone": "X"
+    },
+    {
+      "id": "en006",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en007",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "web",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "en008",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en009",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en010",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "en011",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "en012",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en013",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en014",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "en015",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "none",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "en016",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en017",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en018",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en019",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "U",
+      "model_alone": "X"
+    },
+    {
+      "id": "en020",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en021",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "web",
+      "library": "P",
+      "model_alone": "P"
+    },
+    {
+      "id": "en022",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "none",
+      "library": "P",
+      "model_alone": "P"
+    },
+    {
+      "id": "en023",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en024",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en025",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en026",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en027",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en028",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en029",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en030",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en031",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en032",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "P",
+      "model_alone": "P"
+    },
+    {
+      "id": "en033",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "P",
+      "model_alone": "P"
+    },
+    {
+      "id": "en034",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "en035",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en036",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "X"
+    },
+    {
+      "id": "en037",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "en038",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "X"
+    },
+    {
+      "id": "en039",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en040",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en041",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "web",
+      "library": "W",
+      "model_alone": "W"
+    },
+    {
+      "id": "en042",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "web",
+      "library": "W",
+      "model_alone": "X"
+    },
+    {
+      "id": "en043",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "en044",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "none",
+      "library": "W",
+      "model_alone": "X"
+    },
+    {
+      "id": "en045",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "en046",
+      "lang": "en",
+      "set": "eval_set",
+      "library_source": "none",
+      "library": "W",
+      "model_alone": "X"
+    },
+    {
+      "id": "g047",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "W"
+    },
+    {
+      "id": "g048",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "X"
+    },
+    {
+      "id": "g049",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "g050",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "g051",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "P",
+      "model_alone": "W"
+    },
+    {
+      "id": "g052",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "g053",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "g054",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "g055",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "g056",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "g057",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "g058",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "g059",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "g060",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "g061",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "P",
+      "model_alone": "W"
+    },
+    {
+      "id": "g062",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "g063",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "X"
+    },
+    {
+      "id": "g064",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "g065",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "g066",
+      "lang": "ar",
+      "set": "eval_set",
+      "library_source": "books",
+      "library": "W",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc000",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc001",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc002",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "arc003",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc004",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc005",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc006",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "W",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc007",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc008",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "X"
+    },
+    {
+      "id": "arc009",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "P",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc010",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "arc011",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc012",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc013",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "P",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc014",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc015",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "X"
+    },
+    {
+      "id": "arc016",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "W",
+      "model_alone": "X"
+    },
+    {
+      "id": "arc017",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc018",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc019",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc020",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc021",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "W",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc022",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc023",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "none",
+      "library": "W",
+      "model_alone": "X"
+    },
+    {
+      "id": "arc024",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc025",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "W",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc026",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "P",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc027",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc028",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc029",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc030",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc031",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc032",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc033",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "P",
+      "model_alone": "X"
+    },
+    {
+      "id": "arc034",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc035",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "both",
+      "library": "W",
+      "model_alone": "W"
+    },
+    {
+      "id": "arc036",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc037",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "C"
+    },
+    {
+      "id": "arc038",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    },
+    {
+      "id": "arc039",
+      "lang": "ar",
+      "set": "ar-clean",
+      "library_source": "books",
+      "library": "C",
+      "model_alone": "P"
+    }
+  ]
+}

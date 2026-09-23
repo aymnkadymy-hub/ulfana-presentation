@@ -310,6 +310,31 @@ def reconcile_semantic() -> None:
 
 
 
+
+def reconcile_library_kpi() -> None:
+    """Slide 9 quotes these counts; recompute them from the per-question grades."""
+    kp = SITE/'data'/'library-vs-model-2026-09-23.json'
+    try:
+        d = json.loads(kp.read_text())
+        rows, res = d['per_question'], d['results']
+        n = len(rows)
+        if n != d['sample']['questions'] or len({r['id'] for r in rows}) != n:
+            fail(kp, 'library KPI sample inconsistent')
+        for arm, col in [('library','library'),('model_alone','model_alone')]:
+            if res[arm] != {'correct':sum(r[col]=='C' for r in rows),'wrong':sum(r[col]=='W' for r in rows),'total':n}:
+                fail(kp, f'library KPI {arm} disagrees with grades')
+        better = sum(r['library']=='C' and r['model_alone']!='C' for r in rows)
+        worse = sum(r['model_alone']=='C' and r['library']!='C' for r in rows)
+        if (res['paired']['library_better'], res['paired']['library_worse']) != (better, worse):
+            fail(kp, 'library KPI paired counts disagree with grades')
+        html = (SITE/'index.html').read_text()
+        for needed in [f"{res['model_alone']['correct']}<small>/{n}</small>", f"{res['library']['correct']}<small>/{n}</small>",
+                       f"تحسّن {better} سؤالًا وتراجع {worse}", f"{n} أسئلة"]:
+            if needed not in html:
+                fail(kp, f'slide 9 does not match library KPI: {needed}')
+    except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        fail(kp, f'cannot reconcile library KPI: {type(exc).__name__}')
+
 def reconcile_story() -> None:
     owner=SITE/'data'/'story-copy.json'
     class StoryText(HTMLParser):
@@ -401,6 +426,7 @@ def main() -> int:
     reconcile_expanded()
     reconcile_semantic()
     reconcile_story()
+    reconcile_library_kpi()
     unique_records = list({json.dumps(x,sort_keys=True):x for x in RECORDS}.values())
     print(json.dumps({'status':'passed' if not ERRORS else 'blocked','files_checked':count,'references_checked':len(unique_records),'errors':sorted(set(ERRORS)),'warnings':sorted(set(WARNINGS)),'documents':[x for x in unique_records if x['kind']=='document'],'local_server_links':[x for x in unique_records if x['kind']=='local_server_link'],'anchors_recorded':sum(x['kind']=='anchor' for x in unique_records),'limitations':['Static checks cannot inspect private information embedded in images or PDFs.','Computed JS asset URLs and interactive states require browser QA.']},ensure_ascii=False,indent=2))
     return 1 if ERRORS else 0
