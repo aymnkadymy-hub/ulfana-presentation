@@ -20,7 +20,7 @@ $('#slide-index').replaceChildren(...slides.map((s,i)=>{const b=document.createE
 $('#next').onclick=()=>go(current+1);$('#previous').onclick=()=>go(current-1);
 document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>go(current+1));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(Number(b.dataset.go)));
 $('#overview').onclick=()=>showDialog($('#index-dialog'));
-document.querySelectorAll('[data-evidence]').forEach(b=>b.onclick=async()=>{showDialog($('#evidence-dialog'));await loadEvidence();if(b.classList.contains('example-link'))$('#semantic-evidence').scrollIntoView({block:'start'});});
+document.querySelectorAll('[data-evidence]').forEach(b=>b.onclick=()=>showDialog($('#evidence-dialog')));
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>closeDialog(b.closest('dialog')));
 dialogs.forEach(d=>{d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeDialog(d);}});d.addEventListener('cancel',()=>{if(returnFocus?.isConnected)returnFocus.focus();});});
 window.addEventListener('hashchange',fromHash);
@@ -31,59 +31,5 @@ function motion(v){document.documentElement.classList.toggle('reduce',v);$('#mot
 document.querySelectorAll('[data-companion]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-companion]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$('#companion-main').src=`assets/companions/${b.dataset.companion}.svg`;$('#companion-main').alt=b.dataset.name;$('#companion-name').textContent=b.dataset.name;});
 document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>b.setAttribute('aria-pressed',String(b.getAttribute('aria-pressed')!=='true')));
 document.querySelectorAll('[data-image]').forEach(b=>b.onclick=()=>{$('#zoomed-image').src=b.dataset.image;$('#zoomed-image').alt=b.dataset.imageTitle;$('#image-title').textContent=b.dataset.imageTitle;showDialog($('#image-dialog'));});
-let evidenceLoaded=false;
-async function loadEvidence(){if(evidenceLoaded)return;
- const results=await Promise.allSettled([fetch('data/expanded-benchmark.json').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('data/historical-benchmarks.json').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('data/semantic-review.json').then(r=>{if(!r.ok)throw Error();return r.json();})]);
- const [expanded,historic,semantic]=results;
- if(expanded.status==='fulfilled'){
-  const d=expanded.value, box=$('#expanded-results');box.replaceChildren();
-  const p=document.createElement('p');p.textContent=d.description;box.append(p);
-  const table=document.createElement('table');table.className='result-table';table.innerHTML='<thead><tr><th>المجموعة</th><th>Gemma 3 4B وحده</th><th>مع أولفانا</th></tr></thead>';const tbody=document.createElement('tbody');
-  for(const g of d.groups){const tr=document.createElement('tr');for(const txt of [g.label,`${g.alone.correct} / ${g.total}`,`${g.rag.correct} / ${g.total}`]){const td=document.createElement('td');td.textContent=txt;tr.append(td);}tbody.append(tr);}table.append(tbody);box.append(table);
-  for(const text of d.notes){const p=document.createElement('p');p.textContent=text;box.append(p);}
- }else{$('#expanded-results').textContent='تعذّر تحميل النتائج. يمكنك فتح ملف النتائج عبر الرابط أدناه.';}
- if(historic.status==='fulfilled'){
-  const d=historic.value['model_bakeoff_frozen.json'];const names={'qwen2.5:7b':'Qwen 2.5 7B','Fanar-1-9B-Instruct-GGUF:Q4_K_M':'Fanar 9B','ALLaM-AI_ALLaM-7B-Instruct-preview':'ALLaM 7B','command-r7b-arabic:7b':'Command R7B','qwen2.5:3b':'Qwen 2.5 3B','gemma3:4b':'Gemma 3 4B'};
-  $('#historic-models').replaceChildren();
-  for(const [id,v]of Object.entries(d.models)){const row=document.createElement('div');row.className='mini-model';const label=document.createElement('span');label.textContent=names[id]||id;const bar=document.createElement('i');bar.style.width=`${v.hit/v.of*45}%`;const count=document.createElement('b');count.textContent=`${v.hit}/${v.of}`;row.append(label,bar,count);$('#historic-models').append(row);}
- }
- if(semantic.status==='fulfilled'){
-  const d=semantic.value,t=d.paired_tests,box=$('#semantic-results');box.replaceChildren();
-  const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;};
-  const pv=v=>v<0.001?'p < 0.001':`p = ${v.toFixed(2)}`;
-  // Lead with the finding that survives a paired test, not the bigger-looking one.
-  const kpi=el('div','kpi-card');
-  kpi.append(el('span','kpi-label','الأجوبة الخاطئة أو الممتنعة من 125 سؤالًا'));
-  const pair=el('div','kpi-pair');
-  for(const [arm,label] of [['alone','النموذج وحده'],['rag','مع أولفانا']]){
-   const side=el('div','kpi-side'+(arm==='rag'?' kpi-good':''));
-   side.append(el('b',null,String(t.wrong_answer[arm])),el('span',null,label));
-   pair.append(side);
-   if(arm==='alone')pair.append(el('i','kpi-arrow','←'));
-  }
-  kpi.append(pair);
-  kpi.append(el('p','kpi-plain','بعبارة بسيطة: النموذج وحده أخطأ في نحو سؤال من كل أربعة. ومع ملف الطالب نفسه، أخطأ في نحو سؤال من كل تسعة.'));
-  kpi.append(el('small','kpi-stat',`فرق حقيقي لا صدفة: تحسّن في ${t.wrong_answer.ulfana_better} سؤالًا وتراجع في ${t.wrong_answer.ulfana_worse}، على الأسئلة نفسها · اختبار McNemar، ${pv(t.wrong_answer.p_value)}`));
-  box.append(kpi);
-  // Publishing our own null result is what makes the one above credible.
-  const nul=el('div','kpi-null');
-  nul.append(el('b',null,'وما لم يتحسّن:'));
-  nul.append(el('p',null,`اكتمال الجواب وجودة شرحه بقيا كما هما عمليًا: ${t.complete_answer.alone} مقابل ${t.complete_answer.rag} من ${t.complete_answer.n}. الفرق داخل حدود الصدفة (${pv(t.complete_answer.p_value)})، فلا ندّعي تحسّنًا فيه.`));
-  nul.append(el('p',null,`وفي المحادثات المترابطة: ${t.conversations.alone} مقابل ${t.conversations.rag} من ${t.conversations.n}، عيّنة أصغر من أن تحسم اتجاهًا (${pv(t.conversations.p_value)}).`));
-  box.append(nul);
-  const table=el('table','result-table semantic-table');
-  table.innerHTML='<thead><tr><th>المجموعة</th><th>وحده</th><th>أولفانا</th><th>الدلالة</th></tr></thead>';
-  const body=el('tbody');
-  for(const g of d.groups){
-   const k=t.by_group[g.id],tr=el('tr');
-   for(const v of [g.label,`${g.alone.complete}/${g.eligible}`,`${g.rag.complete}/${g.eligible}`,
-                   k?(k.p_value<0.05?pv(k.p_value):'بلا فرق دالّ'):'غير مختبر'])tr.append(el('td',null,v));
-   body.append(tr);
-  }
-  table.append(body);box.append(el('p','table-cap','اكتمال الجواب لكل مجموعة. لا مجموعة منها تُظهر فرقًا دالًّا في أي اتجاه، بما فيها المجموعتان اللتان يبدو فيها النموذج وحده أعلى.'));box.append(table);
-  box.append(el('p','review-note','مراجعة مباشرة أجراها المساعد، غير معماة، بنموذج واحد محليًا. أسئلة إعادة الصياغة ورسائل المتابعة ليست عينات مستقلة. إسناد الجواب للمصدر يُراجع منفصلًا عن صحة معناه. المقارنة للنظام الكامل ولا تعزل أثر الاسترجاع وحده.'));
- }else{$('#semantic-results').textContent='يمكنك تنزيل المراجعة من الرابط أدناه.';}
- evidenceLoaded=expanded.status==='fulfilled'&&historic.status==='fulfilled'&&semantic.status==='fulfilled';
-}
 document.documentElement.classList.add('js');fromHash();
 })();
